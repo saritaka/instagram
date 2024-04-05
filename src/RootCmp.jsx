@@ -9,6 +9,7 @@ import { HomePage } from "./pages/HomePage";
 import { Explore } from "./pages/Explore";
 import { Messages } from "./pages/Messages";
 import { UserDetails } from "./pages/UserDetails";
+import { StoryModal } from "./cmps/StoryModal";
 
 export function RootCmp() {
   return (

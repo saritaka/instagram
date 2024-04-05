@@ -1,0 +1,29 @@
+.home-page {
+  display: grid;
+  grid-template-areas: "sidemenu main";
+  position: fixed;
+  height: 100vh;
+  @include for-wide-layout {
+    grid-template-columns: minmax(auto, $normal-breakpoint);
+  }
+
+  .side-nav {
+    // display: grid;
+    grid-area: sidemenu;
+    // height: 100vh;
+    // background-color: pink;
+
+    @include for-wide-layout {
+      //   width: $nav-wide-width;
+      width: em(220px);
+      //   min-height: 385px;
+    }
+    padding: 8px 12px 20px 12px;
+  }
+  .main-view {
+    grid-area: main;
+    border-left: em(1px) solid #bcc0c4;
+    // background-color: yellow;
+    width: 100vw;
+  }
+}

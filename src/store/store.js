@@ -6,7 +6,7 @@ import { userReducer } from "./user.reducer.js";
 import { systemReducer } from "./system.reducer";
 
 const rootReducer = combineReducers({
-  storyModule: storyReducer,
+  // storyModule: storyReducer,
   userModule: userReducer,
   systemModule: systemReducer,
   //   reviewModule: reviewReducer,

@@ -15,7 +15,7 @@
 // @import "views/AboutUs";
 @import "views/Explore";
 @import "views/Messages";
-@import "views/StoryIndex";
+@import "views/HomePage";
 @import "views/UserDetails";
 
 // Components
@@ -23,3 +23,5 @@
 @import "cmps/CreateStory";
 @import "cmps/UserMsg";
 @import "cmps/StoryModal";
+@import "cmps/MainView";
+@import "cmps/SideBar";

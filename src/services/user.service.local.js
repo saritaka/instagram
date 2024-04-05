@@ -5,26 +5,26 @@ const STORAGE_KEY_USERS = "Users";
 
 const loggedinUser = {
   _id: "u101",
-  username: "Muko",
-  password: "mukmuk",
-  fullname: "Muki Muka",
-  imgUrl: "http://some-img",
+  username: "Sarit",
+  password: "testtest",
+  fullname: "Sarit Test",
+  imgUrl:
+    "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
   following: [
-    // {
-    //   _id: "u106",
-    //   fullname: "Dob",
-    //   imgUrl: "http://some-img",
-    // },
+    {
+      _id: "u106",
+      fullname: "Dob",
+      imgUrl: "http://some-img",
+    },
   ],
   followers: [
-    // {
-    //   _id: "u105",
-    //   fullname: "Bob",
-    //   imgUrl: "http://some-img",
-    // },
+    {
+      _id: "u105",
+      fullname: "Bob",
+      imgUrl: "http://some-img",
+    },
   ],
-  //   savedStoryIds: ["s104", "s111", "s123"],
-  savedStoryIds: [],
+  savedStoryIds: ["s104", "s111", "s123"],
 };
 
 export const userService = {
@@ -57,11 +57,11 @@ function createUser() {
       },
     ],
     followers: [
-      //   {
-      //     _id: "u101",
-      //     fullname: "Muki Muka",
-      //     imgUrl: "http://some-img",
-      //   },
+      {
+        _id: "u101",
+        fullname: "Muki Muka",
+        imgUrl: "http://some-img",
+      },
     ],
   };
 }

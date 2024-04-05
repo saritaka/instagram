@@ -1,81 +1,195 @@
+import { storageService } from "./async-storage.service.js";
+import { utilService } from "./util.service.js";
+import { userService } from "./user.service.js";
 
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+const STORAGE_KEY = "stories";
 
-const STORAGE_KEY = 'car'
+export const storyService = {
+  query,
+  getById,
+  save,
+  remove,
+  getEmptystory,
+  addstoryMsg,
+};
+window.cs = storyService;
 
-export const carService = {
-    query,
-    getById,
-    save,
-    remove,
-    getEmptyCar,
-    addCarMsg
-}
-window.cs = carService
-
-
-async function query(filterBy = { txt: '', price: 0 }) {
-    var cars = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    }
-    if (filterBy.price) {
-        cars = cars.filter(car => car.price <= filterBy.price)
-    }
-    return cars
-}
-
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
+async function query(filterBy = { txt: "", price: 0 }) {
+  var storys = await storageService.query(STORAGE_KEY);
+  if (filterBy.txt) {
+    const regex = new RegExp(filterBy.txt, "i");
+    storys = storys.filter(
+      (story) => regex.test(story.vendor) || regex.test(story.description)
+    );
+  }
+  if (filterBy.price) {
+    storys = storys.filter((story) => story.price <= filterBy.price);
+  }
+  return storys;
 }
 
-async function remove(carId) {
-    // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, carId)
+function getById(storyId) {
+  return storageService.get(STORAGE_KEY, storyId);
 }
 
-async function save(car) {
-    var savedCar
-    if (car._id) {
-        savedCar = await storageService.put(STORAGE_KEY, car)
-    } else {
-        // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, car)
-    }
-    return savedCar
+async function remove(storyId) {
+  // throw new Error('Nope')
+  await storageService.remove(STORAGE_KEY, storyId);
 }
 
-async function addCarMsg(carId, txt) {
-    // Later, this is all done by the backend
-    const car = await getById(carId)
-    if (!car.msgs) car.msgs = []
-
-    const msg = {
-        id: utilService.makeId(),
-        by: userService.getLoggedinUser(),
-        txt
-    }
-    car.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, car)
-
-    return msg
+async function save(story) {
+  var savedstory;
+  if (story._id) {
+    savedstory = await storageService.put(STORAGE_KEY, story);
+  } else {
+    // Later, owner is set by the backend
+    story.owner = userService.getLoggedinUser();
+    savedstory = await storageService.post(STORAGE_KEY, story);
+  }
+  return savedstory;
 }
 
-function getEmptyCar() {
-    return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-    }
+async function addstoryMsg(storyId, txt) {
+  // Later, this is all done by the backend
+  const story = await getById(storyId);
+  if (!story.msgs) story.msgs = [];
+
+  const msg = {
+    id: utilService.makeId(),
+    by: userService.getLoggedinUser(),
+    txt,
+  };
+  story.msgs.push(msg);
+  await storageService.put(STORAGE_KEY, story);
+
+  return msg;
 }
 
+function getEmptystory() {
+  return {
+    vendor: "Susita-" + (Date.now() % 1000),
+    price: utilService.getRandomIntInclusive(1000, 9000),
+  };
+}
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-
-
-
+stories = [
+  {
+    _id: "s100",
+    txt: "Best trip ever",
+    imgUrl: "http://some-img", //Can be an array if decide to support multiple imgs
+    by: {
+      _id: "u101",
+      fullname: "Ulash Ulashi",
+      imgUrl: "http://some-img",
+    },
+    loc: {
+      lat: 11.11,
+      lng: 22.22,
+      name: "Tel Aviv",
+    },
+    comments: [
+      {
+        id: "c1001",
+        by: {
+          _id: "u105",
+          fullname: "Bob",
+          imgUrl: "http://some-img",
+        },
+        txt: "good one!",
+        likedBy: [
+          // Optional
+          {
+            _id: "u105",
+            fullname: "Bob",
+            imgUrl: "http://some-img",
+          },
+        ],
+      },
+      {
+        id: "c1002",
+        by: {
+          _id: "u106",
+          fullname: "Dob",
+          imgUrl: "http://some-img",
+        },
+        txt: "not good!",
+      },
+    ],
+    likedBy: [
+      {
+        _id: "u105",
+        fullname: "Bob",
+        imgUrl: "http://some-img",
+      },
+      {
+        _id: "u106",
+        fullname: "Dob",
+        imgUrl: "http://some-img",
+      },
+    ],
+    tags: ["fun", "kids"],
+    createdAt: "",
+    status: "Public", //Private,deleted, archieved
+  },
+  {
+    _id: "s200",
+    txt: "Best trip ever",
+    imgUrl: "http://some-img", //Can be an array if decide to support multiple imgs
+    by: {
+      _id: "u101",
+      fullname: "Ulash Ulashi",
+      imgUrl: "http://some-img",
+    },
+    loc: {
+      lat: 11.11,
+      lng: 22.22,
+      name: "Tel Aviv",
+    },
+    comments: [
+      {
+        id: "c1001",
+        by: {
+          _id: "u105",
+          fullname: "Bob",
+          imgUrl: "http://some-img",
+        },
+        txt: "good one!",
+        likedBy: [
+          // Optional
+          {
+            _id: "u105",
+            fullname: "Bob",
+            imgUrl: "http://some-img",
+          },
+        ],
+      },
+      {
+        id: "c1002",
+        by: {
+          _id: "u106",
+          fullname: "Dob",
+          imgUrl: "http://some-img",
+        },
+        txt: "not good!",
+      },
+    ],
+    likedBy: [
+      {
+        _id: "u105",
+        fullname: "Bob",
+        imgUrl: "http://some-img",
+      },
+      {
+        _id: "u106",
+        fullname: "Dob",
+        imgUrl: "http://some-img",
+      },
+    ],
+    tags: ["fun", "kids"],
+    createdAt: "",
+    status: "Public", //Private,deleted, archieved
+  },
+];
+storageService.post(STORAGE_KEY, stories).then((x) => console.log(x));

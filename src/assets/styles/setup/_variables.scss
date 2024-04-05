@@ -1,14 +1,30 @@
 // Colors
-$clr1: #ce2e6c;
-$clr2: #4f3a65;
-$clr3: #574f7d;
-$clr4: #95adbe;
-$clr5: #dff0ea;
-$clr6: #fff;
-$clr7: #222;
-
+$clr-primary-background: #ffffff;
+$clr-primary-btn: #0095f6;
+$clr-primary-btn-hover: #1877f2;
+$clr-primary-icon: #262626;
+$clr-primary-text: #000000;
+$clr-secondary-background: #fafafa;
+$clr-secondary-btn: #262626;
+$clr-secondary-btn-background: #efefef;
+$clr-secondary-btn-hover: #dbdbdb;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+
+//NavBar width
+$nav-narrow-width: em(72px);
+$nav-medium-width: em(244px);
+$nav-wide-width: em(335px);
+
+//font
+$font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Helvetica, Arial, sans-serif;
+$font-weight-system-bold: 700;
+$font-weight-system-extra-bold: 800;
+$font-weight-system-extra-light: 200;
+$font-weight-system-light: 300;
+$font-weight-system-medium: 500;
+$font-weight-system-regular: 400;
