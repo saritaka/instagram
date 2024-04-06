@@ -22,6 +22,10 @@
   }
   .main-view {
     grid-area: main;
+    // display: subgrid;
+    // grid-template-columns: subgrid;
+    // grid-template-rows: subgrid;
+
     border-left: em(1px) solid #bcc0c4;
     // background-color: yellow;
     width: 100vw;

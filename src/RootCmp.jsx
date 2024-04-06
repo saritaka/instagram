@@ -10,6 +10,7 @@ import { Explore } from "./pages/Explore";
 import { Messages } from "./pages/Messages";
 import { UserDetails } from "./pages/UserDetails";
 import { StoryModal } from "./cmps/StoryModal";
+// import { AppIndex } from "./cmps/AppIndex";
 
 export function RootCmp() {
   return (
@@ -26,6 +27,7 @@ export function RootCmp() {
               />
             ))} */}
           <Route path="/" element={<HomePage />}>
+            {/* <Route path="/" element={<AppIndex />}> */}
             <Route path="/explore" element={<Explore />} />
             <Route path="/direct/inbox" element={<Messages />} />
             <Route path="/:username" element={<UserDetails />} />

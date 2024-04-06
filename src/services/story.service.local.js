@@ -1,31 +1,33 @@
 import { storageService } from "./async-storage.service.js";
 import { utilService } from "./util.service.js";
-import { userService } from "./user.service.js";
+import { userService } from "./user.service.local.js";
 
 const STORAGE_KEY = "stories";
 
 export const storyService = {
   query,
   getById,
-  save,
-  remove,
-  getEmptystory,
-  addstoryMsg,
+  //   save,
+  //   remove,
+  //   getEmptystory,
+  //   addstoryMsg,
 };
 window.cs = storyService;
 
-async function query(filterBy = { txt: "", price: 0 }) {
-  var storys = await storageService.query(STORAGE_KEY);
-  if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, "i");
-    storys = storys.filter(
-      (story) => regex.test(story.vendor) || regex.test(story.description)
-    );
-  }
-  if (filterBy.price) {
-    storys = storys.filter((story) => story.price <= filterBy.price);
-  }
-  return storys;
+// async function query(filterBy = { txt: "", price: 0 }) {
+async function query() {
+  //   var stories = await storageService.query(STORAGE_KEY);
+  //   if (filterBy.txt) {
+  //     const regex = new RegExp(filterBy.txt, "i");
+  //     stories = stories.filter(
+  //       (story) => regex.test(story.vendor) || regex.test(story.description)
+  //     );
+  //   }
+  //   if (filterBy.price) {
+  //     stories = stories.filter((story) => story.price <= filterBy.price);
+  //   }
+  console.log(" story service", stories);
+  return stories;
 }
 
 function getById(storyId) {
@@ -74,13 +76,14 @@ function getEmptystory() {
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-stories = [
+
+var stories = [
   {
     _id: "s100",
     txt: "Best trip ever",
     imgUrl: "http://some-img", //Can be an array if decide to support multiple imgs
     by: {
-      _id: "u101",
+      _id: "u100",
       fullname: "Ulash Ulashi",
       imgUrl: "http://some-img",
     },
@@ -91,7 +94,7 @@ stories = [
     },
     comments: [
       {
-        id: "c1001",
+        id: "c1000",
         by: {
           _id: "u105",
           fullname: "Bob",
@@ -108,7 +111,7 @@ stories = [
         ],
       },
       {
-        id: "c1002",
+        id: "c1001",
         by: {
           _id: "u106",
           fullname: "Dob",
@@ -138,7 +141,7 @@ stories = [
     txt: "Best trip ever",
     imgUrl: "http://some-img", //Can be an array if decide to support multiple imgs
     by: {
-      _id: "u101",
+      _id: "u200",
       fullname: "Ulash Ulashi",
       imgUrl: "http://some-img",
     },
@@ -149,7 +152,7 @@ stories = [
     },
     comments: [
       {
-        id: "c1001",
+        id: "c2000",
         by: {
           _id: "u105",
           fullname: "Bob",
@@ -166,7 +169,7 @@ stories = [
         ],
       },
       {
-        id: "c1002",
+        id: "c2001",
         by: {
           _id: "u106",
           fullname: "Dob",
@@ -192,4 +195,5 @@ stories = [
     status: "Public", //Private,deleted, archieved
   },
 ];
-storageService.post(STORAGE_KEY, stories).then((x) => console.log(x));
+storageService.post(STORAGE_KEY, stories);
+// storageService.post(STORAGE_KEY, stories).then((x) => console.log(x));

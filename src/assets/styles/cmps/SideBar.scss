@@ -1,6 +1,4 @@
 .side-bar {
-  //   max-width: em(311px);
-  //   max-height: em(48px);
   height: 100vh;
 
   .logo-btn {
@@ -8,36 +6,26 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    // align-items: center;
     padding: 0;
     width: em(196px);
-    // width: 196px;
     height: em(92px);
     padding: 25px 12px 16px 8px;
     margin-bottom: em(19px);
     img {
-      //   display: flex;
-      //   align-items: center;
       width: em(103px);
       height: rem(29px);
     }
   }
 
   .nav {
-    // background-color: blueviolet;
-    // min-height: 79vh;
     flex-grow: 1;
     a {
       min-width: em(196px);
       min-height: em(24px);
       padding: em(12px);
       margin: 8px 0;
-      //   background-color: rgba(0, 220, 200, 0.6);
       display: flex;
       align-items: center;
-
-      //   max-width: em(311px);
-      //   max-height: em(48px);
       text-decoration: none;
       color: $clr-secondary-btn;
       img {
@@ -48,8 +36,7 @@
       }
     }
     a:hover {
-      background-color: #f0f2f5;
-      //   background-color: $clr-secondary-btn-hover;
+      background-color: #f1f4f7;
       border-radius: em(10px);
     }
     a:focus {
@@ -59,14 +46,14 @@
 
   .menu-btn {
     margin-bottom: em(10px);
+    min-width: em(196px);
+    min-height: em(24px);
+
     button {
       background-color: $clr-primary-background;
-      min-width: em(196px);
-      min-height: em(24px);
+      width: 100%;
       padding: em(12px);
-      margin: em(8px) 0;
-
-      //   background-color: rgba(0, 220, 200, 0.6);
+      margin: 8px 0;
       display: flex;
       align-items: center;
       color: $clr-secondary-btn;
@@ -76,7 +63,7 @@
         height: em(24px);
       }
       &:hover {
-        background-color: #f0f2f5;
+        background-color: #f1f4f7;
         border-radius: em(10px);
       }
       &:focus {

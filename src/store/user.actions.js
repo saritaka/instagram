@@ -23,6 +23,19 @@ export async function loadUsers() {
   }
 }
 
+export async function loadUser() {
+  try {
+    store.dispatch({ type: LOADING_START });
+    const user = await userService.getLoggedInUser();
+    // console.log("user actions loaduser", { user });
+    store.dispatch({ type: SET_USER, user });
+  } catch (err) {
+    console.log("UserActions: err in loadUser", err);
+  } finally {
+    store.dispatch({ type: LOADING_DONE });
+  }
+}
+
 // export async function removeUser(userId) {
 //   try {
 //     await userService.remove(userId);
@@ -76,12 +89,12 @@ export async function loadUsers() {
 //   }
 // }
 
-export async function loadUser(userId) {
-  try {
-    const user = await userService.getById(userId);
-    store.dispatch({ type: SET_USER, user });
-  } catch (err) {
-    showErrorMsg("Cannot load user");
-    console.log("Cannot load user", err);
-  }
-}
+// export async function loadUser(userId) {
+//   try {
+//     const user = await userService.getById(userId);
+//     store.dispatch({ type: SET_USER, user });
+//   } catch (err) {
+//     showErrorMsg("Cannot load user");
+//     console.log("Cannot load user", err);
+//   }
+// }

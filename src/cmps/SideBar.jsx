@@ -11,13 +11,12 @@ import menu from "../assets/img/menu.svg";
 export function SideBar() {
   const navigate = useNavigate();
   const navButtons = [
-    // { field: "", path: "", icon: instagram },
     { field: "Home", path: "", icon: home },
     { field: "Search", path: "", icon: search },
     { field: "Explore", path: "/explore", icon: explore },
     { field: "Messages", path: "/direct/inbox", icon: message },
     { field: "Create", path: "", icon: add },
-    { field: "Profile", path: "", icon: profile },
+    { field: "Profile", path: "/testprofileID", icon: profile },
   ];
 
   return (
@@ -39,8 +38,6 @@ export function SideBar() {
           })}
         </nav>
       </div>
-      {/* <div className="test"> */}
-      {/* <div className="test"> */}
       <div className="menu-btn">
         <button className="menu-btn flex fs16">
           <img src={menu}></img>

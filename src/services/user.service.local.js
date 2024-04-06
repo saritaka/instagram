@@ -1,7 +1,9 @@
 import { storageService } from "./async-storage.service";
 
-// const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-const STORAGE_KEY_USERS = "Users";
+const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser";
+const STORAGE_KEY_USER_DB = "user";
+
+const user = ["u100", "u101", "u200"];
 
 const loggedinUser = {
   _id: "u101",
@@ -12,7 +14,7 @@ const loggedinUser = {
     "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
   following: [
     {
-      _id: "u106",
+      _id: "u100",
       fullname: "Dob",
       imgUrl: "http://some-img",
     },
@@ -24,16 +26,23 @@ const loggedinUser = {
       imgUrl: "http://some-img",
     },
   ],
-  savedStoryIds: ["s104", "s111", "s123"],
+  savedStoryIds: ["s200", "s100"],
 };
 
 export const userService = {
-  getDefaultFilter,
+  // getDefaultFilter,
   getLoggedInUser,
-  createUser,
+  getUsers,
+  // createUser,
 };
 
-function getLoggedInUser() {}
+function getLoggedInUser() {
+  return loggedinUser;
+}
+
+function getUsers() {
+  return user;
+}
 
 function getDefaultFilter() {
   return {
