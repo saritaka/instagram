@@ -7,7 +7,6 @@ export async function loadStories() {
   store.dispatch({ type: LOADING_START });
   try {
     const stories = await storyService.query();
-    // console.log("in story action, stories:", stories);
     store.dispatch({ type: SET_STORIES, stories });
   } catch (err) {
     console.log("Had issues loading stories", err);

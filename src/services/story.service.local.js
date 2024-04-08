@@ -81,11 +81,14 @@ var stories = [
   {
     _id: "s100",
     txt: "Best trip ever",
-    imgUrl: "http://some-img", //Can be an array if decide to support multiple imgs
+    imgUrl:
+      "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595929/cld-sample-4.jpg", //Can be an array if decide to support multiple imgs
     by: {
       _id: "u100",
-      fullname: "Ulash Ulashi",
-      imgUrl: "http://some-img",
+      fullname: "Tal Bar",
+      username: "sunflower_u",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
     },
     loc: {
       lat: 11.11,
@@ -98,7 +101,8 @@ var stories = [
         by: {
           _id: "u105",
           fullname: "Bob",
-          imgUrl: "http://some-img",
+          imgUrl:
+            "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
         txt: "good one!",
         likedBy: [
@@ -106,7 +110,8 @@ var stories = [
           {
             _id: "u105",
             fullname: "Bob",
-            imgUrl: "http://some-img",
+            imgUrl:
+              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
           },
         ],
       },
@@ -115,7 +120,8 @@ var stories = [
         by: {
           _id: "u106",
           fullname: "Dob",
-          imgUrl: "http://some-img",
+          imgUrl:
+            "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
         txt: "not good!",
       },
@@ -124,26 +130,31 @@ var stories = [
       {
         _id: "u105",
         fullname: "Bob",
-        imgUrl: "http://some-img",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
       },
       {
         _id: "u106",
         fullname: "Dob",
-        imgUrl: "http://some-img",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
       },
     ],
     tags: ["fun", "kids"],
-    createdAt: "",
+    createdAt: 1712603473,
     status: "Public", //Private,deleted, archieved
   },
   {
     _id: "s200",
     txt: "Best trip ever",
-    imgUrl: "http://some-img", //Can be an array if decide to support multiple imgs
+    imgUrl:
+      "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg", //Can be an array if decide to support multiple imgs
     by: {
       _id: "u200",
       fullname: "Ulash Ulashi",
-      imgUrl: "http://some-img",
+      username: "traveler",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
     },
     loc: {
       lat: 11.11,
@@ -156,7 +167,8 @@ var stories = [
         by: {
           _id: "u105",
           fullname: "Bob",
-          imgUrl: "http://some-img",
+          imgUrl:
+            "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
         txt: "good one!",
         likedBy: [
@@ -164,7 +176,8 @@ var stories = [
           {
             _id: "u105",
             fullname: "Bob",
-            imgUrl: "http://some-img",
+            imgUrl:
+              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
           },
         ],
       },
@@ -173,7 +186,8 @@ var stories = [
         by: {
           _id: "u106",
           fullname: "Dob",
-          imgUrl: "http://some-img",
+          imgUrl:
+            "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpgg",
         },
         txt: "not good!",
       },
@@ -182,18 +196,22 @@ var stories = [
       {
         _id: "u105",
         fullname: "Bob",
-        imgUrl: "http://some-img",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
       },
       {
         _id: "u106",
         fullname: "Dob",
-        imgUrl: "http://some-img",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
       },
     ],
     tags: ["fun", "kids"],
-    createdAt: "",
+    createdAt: 1712603473,
     status: "Public", //Private,deleted, archieved
   },
 ];
+
 storageService.post(STORAGE_KEY, stories);
+
 // storageService.post(STORAGE_KEY, stories).then((x) => console.log(x));

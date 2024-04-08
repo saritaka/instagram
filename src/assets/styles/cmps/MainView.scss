@@ -1,14 +1,7 @@
 .main-view {
   display: grid;
-  //   grid-template-rows: subgrid;
-  //   grid-template-rows: subgrid;
-  //   grid-column: 1/3;
-
   grid-template-columns: 1fr, rem(319px);
   grid-template-rows: subgrid;
-
-  //   grid-template-columns: 200px, 319px;
-
   overflow: scroll;
 
   .card {
@@ -21,19 +14,16 @@
       border-radius: rem(5px);
     }
     .card-header {
-      //   flex-direction: row;
-
       align-items: center;
-
       justify-content: space-between;
       span {
         margin: auto;
         padding-right: em(4px);
       }
-
       img {
         width: rem(24px);
         height: rem(24px);
+        border-radius: 50%;
       }
       button {
         color: black;
@@ -47,28 +37,31 @@
       justify-content: space-between;
       align-items: center;
       background-color: $clr-primary-background;
-
       button {
         margin: 0;
         background-color: $clr-primary-background;
       }
-
       img {
         max-width: rem(24px);
         max-height: rem(24px);
         background-color: $clr-primary-background;
-        // border: 1 solid white;
       }
     }
-
     .post-btn {
       padding-left: 0;
     }
     .save-btn {
       padding: 0;
     }
+    & {
+      border-bottom: 1px solid gray;
+      font-size: 14px;
+    }
+    span {
+      font-size: 12px;
+      font-weight: $font-weight-system-medium;
+    }
   }
-
   .suggested-profiles {
     padding-left: rem(64px);
     margin-top: rem(36px);
