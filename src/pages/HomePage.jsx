@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router";
 
 import { loadStories } from "../store/story.actions";
 import { loadUser } from "../store/user.actions";
 
 import { SideBar } from "../cmps/SideBar";
 import { MainView } from "../cmps/MainView";
-import { useLocation, useParams } from "react-router";
 import { Messages } from "./Messages";
 import { Explore } from "./Explore";
 import { UserDetails } from "./UserDetails";
+import { StoryModal } from "../cmps/StoryModal";
 
 export function HomePage() {
   const params = useParams();
@@ -38,6 +39,7 @@ export function HomePage() {
         {location == "/direct/inbox" && <Messages />}
         {location == "/testprofileID" && <UserDetails />}
       </div>
+      {/* {location == "/p/:storyId" && <StoryModal />} */}
     </section>
   );
 }

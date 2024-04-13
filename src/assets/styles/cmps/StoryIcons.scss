@@ -1,0 +1,19 @@
+.card-btn {
+  justify-content: space-between;
+  align-items: center;
+  background-color: $clr-primary-background;
+
+  button {
+    margin: 0;
+    background-color: $clr-primary-background;
+
+    img {
+      max-width: rem(24px);
+      max-height: rem(24px);
+      background-color: $clr-primary-background;
+    }
+  }
+}
+.post-btn {
+  padding-left: 0;
+}

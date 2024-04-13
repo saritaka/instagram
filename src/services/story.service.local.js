@@ -14,9 +14,11 @@ export const storyService = {
 };
 window.cs = storyService;
 
+_createStories();
+
 // async function query(filterBy = { txt: "", price: 0 }) {
 async function query() {
-  //   var stories = await storageService.query(STORAGE_KEY);
+  var stories = await storageService.query(STORAGE_KEY);
   //   if (filterBy.txt) {
   //     const regex = new RegExp(filterBy.txt, "i");
   //     stories = stories.filter(
@@ -76,142 +78,154 @@ function getEmptystory() {
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
-
-var stories = [
-  {
-    _id: "s100",
-    txt: "Best trip ever",
-    imgUrl:
-      "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595929/cld-sample-4.jpg", //Can be an array if decide to support multiple imgs
-    by: {
-      _id: "u100",
-      fullname: "Tal Bar",
-      username: "sunflower_u",
+function createStory() {
+  var stories = [
+    {
+      _id: "s100",
+      txt: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id nam voluptatem, enim recusandae ea ex obcaecati error dicta voluptates numquam consequatur neque commodi, architecto odit itaque non fuga minima quas.",
       imgUrl:
-        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-    },
-    loc: {
-      lat: 11.11,
-      lng: 22.22,
-      name: "Tel Aviv",
-    },
-    comments: [
-      {
-        id: "c1000",
-        by: {
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595929/cld-sample-4.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u100",
+        fullname: "Tal Bar",
+        username: "sunflower_u",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [
+        {
+          id: "c1000",
+          by: {
+            _id: "u105",
+            fullname: "Bob",
+            username: "Bob111",
+            imgUrl:
+              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+          },
+          txt: "good one!",
+          likedBy: [
+            // Optional
+            {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl:
+                "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+            },
+          ],
+        },
+        {
+          id: "c1001",
+          by: {
+            _id: "u106",
+            fullname: "Dob",
+            username: "Dob111",
+            imgUrl:
+              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+          },
+          txt: "not good!",
+        },
+      ],
+      likedBy: [
+        {
           _id: "u105",
           fullname: "Bob",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
-        txt: "good one!",
-        likedBy: [
-          // Optional
-          {
-            _id: "u105",
-            fullname: "Bob",
-            imgUrl:
-              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-          },
-        ],
-      },
-      {
-        id: "c1001",
-        by: {
+        {
           _id: "u106",
           fullname: "Dob",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
-        txt: "not good!",
-      },
-    ],
-    likedBy: [
-      {
-        _id: "u105",
-        fullname: "Bob",
-        imgUrl:
-          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-      },
-      {
-        _id: "u106",
-        fullname: "Dob",
-        imgUrl:
-          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-      },
-    ],
-    tags: ["fun", "kids"],
-    createdAt: 1712603473,
-    status: "Public", //Private,deleted, archieved
-  },
-  {
-    _id: "s200",
-    txt: "Best trip ever",
-    imgUrl:
-      "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg", //Can be an array if decide to support multiple imgs
-    by: {
-      _id: "u200",
-      fullname: "Ulash Ulashi",
-      username: "traveler",
+      ],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s200",
+      txt: "Best trip ever",
       imgUrl:
-        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-    },
-    loc: {
-      lat: 11.11,
-      lng: 22.22,
-      name: "Tel Aviv",
-    },
-    comments: [
-      {
-        id: "c2000",
-        by: {
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u100",
+        fullname: "Ulash Ulashi",
+        username: "traveler",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [
+        {
+          id: "c2000",
+          by: {
+            _id: "u105",
+            fullname: "Bob",
+            username: "Bob123",
+            imgUrl:
+              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+          },
+          txt: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id nam voluptatem, enim recusandae ea ex obcaecati error dicta voluptates numquam consequatur neque commodi, architecto odit itaque non fuga minima quas.",
+          likedBy: [
+            // Optional
+            {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl:
+                "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
+            },
+          ],
+        },
+        {
+          id: "c2001",
+          by: {
+            _id: "u106",
+            fullname: "Dob",
+            username: "Dob123",
+            imgUrl:
+              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpgg",
+          },
+          txt: "not good!",
+        },
+      ],
+      likedBy: [
+        {
           _id: "u105",
           fullname: "Bob",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
-        txt: "good one!",
-        likedBy: [
-          // Optional
-          {
-            _id: "u105",
-            fullname: "Bob",
-            imgUrl:
-              "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-          },
-        ],
-      },
-      {
-        id: "c2001",
-        by: {
+        {
           _id: "u106",
           fullname: "Dob",
           imgUrl:
-            "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpgg",
+            "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
-        txt: "not good!",
-      },
-    ],
-    likedBy: [
-      {
-        _id: "u105",
-        fullname: "Bob",
-        imgUrl:
-          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-      },
-      {
-        _id: "u106",
-        fullname: "Dob",
-        imgUrl:
-          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
-      },
-    ],
-    tags: ["fun", "kids"],
-    createdAt: 1712603473,
-    status: "Public", //Private,deleted, archieved
-  },
-];
+      ],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+  ];
+  return stories;
+}
 
-storageService.post(STORAGE_KEY, stories);
+function _createStories() {
+  let stories = utilService.loadFromStorage(STORAGE_KEY);
+  if (!stories || !stories.length) {
+    stories = createStory();
+  }
+  utilService.saveToStorage(STORAGE_KEY, stories);
+}
 
 // storageService.post(STORAGE_KEY, stories).then((x) => console.log(x));

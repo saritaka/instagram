@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: 1fr, rem(319px);
   grid-template-rows: subgrid;
-  overflow: scroll;
+  //   overflow: scroll;
 
-  .card {
+  .cards {
     grid-column: 1/2;
     max-width: rem(468px);
     margin: rem(50px) auto;
@@ -12,54 +12,58 @@
       width: rem(468px);
       height: rem(468px);
       border-radius: rem(5px);
+      object-fit: cover;
     }
-    .card-header {
-      align-items: center;
-      justify-content: space-between;
-      span {
-        margin: auto;
-        padding-right: em(4px);
-      }
-      img {
-        width: rem(24px);
-        height: rem(24px);
-        border-radius: 50%;
-      }
-      button {
-        color: black;
-        padding: 0;
-      }
-      .date {
-        width: em(10px);
-      }
-    }
-    .card-btn {
-      justify-content: space-between;
-      align-items: center;
-      background-color: $clr-primary-background;
-      button {
-        margin: 0;
-        background-color: $clr-primary-background;
-      }
-      img {
-        max-width: rem(24px);
-        max-height: rem(24px);
-        background-color: $clr-primary-background;
-      }
-    }
-    .post-btn {
-      padding-left: 0;
-    }
-    .save-btn {
-      padding: 0;
-    }
-    & {
+
+    .card {
       border-bottom: 1px solid gray;
-      font-size: 14px;
-    }
-    span {
-      font-size: 12px;
-      font-weight: $font-weight-system-medium;
+
+      .card-header {
+        align-items: center;
+        justify-content: space-between;
+        span {
+          margin: auto;
+          padding-right: em(4px);
+        }
+        img {
+          width: rem(24px);
+          height: rem(24px);
+          border-radius: 50%;
+        }
+        button {
+          color: black;
+          padding: 0;
+        }
+        .date {
+          width: em(10px);
+        }
+      }
+
+      & {
+        font-size: 14px;
+      }
+      span {
+        font-size: 12px;
+        font-weight: $font-weight-system-medium;
+      }
+      .card-comment {
+        // .story-txt {
+        //   //   background-color: yellow;
+        //   //   max-height: rem(54px);
+        // }
+        button {
+          padding-left: 0;
+          margin-left: 0;
+          color: gray;
+        }
+        input {
+          border: none;
+          margin-bottom: rem(15px);
+        }
+        input:focus {
+          outline: none;
+        }
+      }
     }
   }
   .suggested-profiles {

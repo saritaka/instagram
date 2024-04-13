@@ -1,13 +1,18 @@
 .home-page {
   display: grid;
   grid-template-areas: "sidemenu main";
-  position: fixed;
+  //   position: fixed;
   height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  //   position: relative;
+  //   overflow: auto;
   @include for-wide-layout {
     grid-template-columns: minmax(auto, $normal-breakpoint);
   }
 
   .side-nav {
+    // position: fixed;
     // display: grid;
     grid-area: sidemenu;
     // height: 100vh;

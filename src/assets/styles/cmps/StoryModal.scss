@@ -1,0 +1,78 @@
+.story-modal {
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  //   display: flex;
+  align-items: center;
+  justify-content: center;
+  //   margin: em(30px);
+  //   margin: auto;
+  .modal-btn {
+    position: absolute;
+    right: em(10px);
+    top: em(10px);
+  }
+  .story-content {
+    width: 95vh;
+    height: 90vh;
+    background-color: beige;
+    border-radius: em(5px);
+    display: grid;
+    // grid-template-columns: repeat(2, auto);
+    grid-template-areas: "picture details";
+
+    .picture {
+      grid-area: "picture";
+      min-width: em(220px);
+      //   max-height: 100vh;
+      img {
+        object-fit: cover;
+        height: 100%;
+        // width: 100%;
+      }
+    }
+
+    .details {
+      grid-area: "details";
+
+      //   overflow: scroll;
+
+      //   min-width: 25vw;
+      .details-header {
+        justify-content: space-between;
+        align-items: center;
+        height: em(60px);
+        border-bottom: 1px solid gray;
+
+        .icon {
+          width: rem(24px);
+          height: rem(24px);
+        }
+      }
+
+      .details-comments {
+        justify-content: center;
+
+        // justify-items: center;
+        margin: 0 auto;
+        overflow: scroll;
+      }
+    }
+  }
+  .profile-pic {
+    width: rem(48px);
+    height: rem(48px);
+    border-radius: 50%;
+  }
+  .profile-btn {
+    //   color: black;
+    color: black;
+    font-weight: $font-weight-system-bold;
+    margin: auto;
+    padding-right: em(5px);
+  }
+  .comment-like {
+    width: rem(16px);
+    height: rem(16px);
+  }
+}

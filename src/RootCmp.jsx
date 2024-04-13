@@ -31,8 +31,8 @@ export function RootCmp() {
             <Route path="/explore" element={<Explore />} />
             <Route path="/direct/inbox" element={<Messages />} />
             <Route path="/:username" element={<UserDetails />} />
-            <Route path="/p/:storyid" element={<StoryModal />} />
           </Route>
+          <Route path="/p/:storyid" element={<StoryModal />} />
         </Routes>
       </main>
       {/* <AppFooter /> */}
