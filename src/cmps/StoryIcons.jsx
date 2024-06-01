@@ -34,20 +34,20 @@ export function StoryIcons({ Story, user, updateStory }) {
   ];
 
   function changeState(field, update = false) {
-    console.log("update", update);
+    // console.log("update", update);
 
     if (field === "likedBy") {
-      console.log("the story before", Story);
+      // console.log("the story before", Story);
       if (Story.likedBy) {
         var checkLikes = Story.likedBy.findIndex(
           (like) => like._id === user._id
         );
-        console.log("check likes ", checkLikes);
+        // console.log("check likes ", checkLikes);
 
         if (checkLikes != -1) {
           if (update) {
             Story.likedBy.splice(checkLikes, 1);
-            console.log("the story after splice", Story);
+            // console.log("the story after splice", Story);
             setLike(false);
 
             updateStory(Story);
@@ -93,16 +93,12 @@ export function StoryIcons({ Story, user, updateStory }) {
         }
       }
     }
-    console.log("the story after", Story);
-    console.log("the user after", user);
+    // console.log("the story after", Story);
+    // console.log("the user after", user);
   }
 
   function btnAction(command) {
     switch (command) {
-      case "like":
-        // postBtns[ind].field = favorite_filled;
-        // console.log(postBtns[ind]);
-        break;
       case "comment":
         if (location.slice(0, 1) == "/p") {
           break;
@@ -113,9 +109,6 @@ export function StoryIcons({ Story, user, updateStory }) {
         break;
       case "share":
         console.log("send1");
-        break;
-      case "save":
-        console.log("save1");
         break;
     }
   }

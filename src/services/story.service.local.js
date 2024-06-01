@@ -121,6 +121,7 @@ function createStory() {
               "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
           },
           txt: "not good!",
+          likedBy: [],
         },
       ],
       likedBy: [
@@ -192,6 +193,7 @@ function createStory() {
               "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpgg",
           },
           txt: "not good!",
+          likedBy: [],
         },
       ],
       likedBy: [

@@ -1,0 +1,19 @@
+.add-comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  div {
+    height: 18px;
+  }
+
+  input {
+    width: 32em;
+    overflow-wrap: break-word;
+  }
+
+  button {
+    padding: 0;
+  }
+}

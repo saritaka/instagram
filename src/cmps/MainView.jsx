@@ -9,9 +9,12 @@ import { StoryDate } from "./StoryDate";
 import { StoryIcons } from "./StoryIcons";
 
 import * as actions from "../store/story.actions";
+import { AddComment } from "./AddComment";
+import { useNavigate } from "react-router";
 // import dot from "../assets/img/dot.svg";
 
 export function MainView({ stories, user, updateStory }) {
+  const navigate = useNavigate();
   console.log(stories);
   // console.log(user);
   var relavantStories = getRelevantStories();
@@ -78,15 +81,19 @@ export function MainView({ stories, user, updateStory }) {
                   {story.txt}
                 </div>
                 <div>
-                  <button>View all {story.comments.length} comments</button>
+                  <button onClick={() => navigate(`/p/${story._id}`)}>
+                    View all {story.comments.length} comments
+                  </button>
                 </div>
-                <div>
+                <AddComment Story={story} user={user} />
+                {/* <div>
                   <input
                     type="text"
                     id="comment"
                     placeholder="Add a comment..."
                   ></input>
-                </div>
+                  <button>Post</button>
+                </div> */}
               </div>
             </div>
           );
