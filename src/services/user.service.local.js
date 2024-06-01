@@ -9,7 +9,7 @@ const loggedinUser = {
   _id: "u101",
   username: "Sarit",
   password: "testtest",
-  fullname: "Sarit Test",
+  fullname: "Sarit Ak",
   imgUrl:
     "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
   following: [
@@ -53,10 +53,11 @@ function getDefaultFilter() {
 
 function createUser() {
   return {
-    _id: utilService.makeId(),
-    username: "test",
-    password: "mukmuk",
-    fullname: "test",
+    // _id: utilService.makeId(),
+    _id: "u123",
+    username: "Sarita",
+    password: "pass123",
+    fullname: "Sarit test",
     imgUrl: "http://some-img",
     following: [
       {

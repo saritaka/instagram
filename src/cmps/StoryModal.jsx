@@ -1,16 +1,23 @@
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 import close from "../assets/img/close.svg";
 import favorite from "../assets/img/favorite.svg";
 import menu from "../assets/img/menu_dots.svg";
 import { StoryDate } from "./StoryDate";
+import { StoryIcons } from "./StoryIcons";
 
+// export function StoryModal({ storyId }) {
 export function StoryModal() {
+  const params = useParams();
+  console.log("in story modal - params.storyid", params.storyid);
+  const storyId = params.storyid;
+  const navigate = useNavigate();
   const stories = useSelector((storeState) => storeState.storyModule.stories);
-  const location = useLocation().pathname;
+  // const location = useLocation().pathname;
+
   console.log("stores in story modal", stories);
-  console.log("location in story modal", location.slice(3));
+  // console.log("location in story modal", location.slice(3));
 
   const story = getStory();
   console.log("the story", story);
@@ -18,14 +25,15 @@ export function StoryModal() {
 
   function getStory() {
     if (stories) {
-      const story_ = stories.filter((story) => story._id === location.slice(3));
+      // const story_ = stories.filter((story) => story._id === location.slice(3));
+      const story_ = stories.filter((story) => story._id === storyId);
       return story_;
     }
   }
 
   return (
     <section className="story-modal flex">
-      <button className="modal-btn">
+      <button className="modal-btn" onClick={() => navigate("/")}>
         <img src={close}></img>
       </button>
       <div className="story-content">
@@ -78,6 +86,7 @@ export function StoryModal() {
           </div>
         </div>
       </div>
+      <div>{/* <StoryIcons Story={story[0]} /> */}</div>
     </section>
   );
 }

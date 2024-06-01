@@ -1,11 +1,13 @@
 .story-modal {
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
   inset: 0;
   //   display: flex;
   align-items: center;
   justify-content: center;
-  //   margin: em(30px);
+  margin: 6em;
+  // padding: 6em;
+  // background-color: pink;
   //   margin: auto;
   .modal-btn {
     position: absolute;
@@ -15,7 +17,7 @@
   .story-content {
     width: 95vh;
     height: 90vh;
-    background-color: beige;
+    // background-color: beige;
     border-radius: em(5px);
     display: grid;
     // grid-template-columns: repeat(2, auto);
@@ -55,7 +57,7 @@
 
         // justify-items: center;
         margin: 0 auto;
-        overflow: scroll;
+        overflow: auto;
       }
     }
   }

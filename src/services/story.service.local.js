@@ -7,8 +7,8 @@ const STORAGE_KEY = "stories";
 export const storyService = {
   query,
   getById,
-  //   save,
-  //   remove,
+  save,
+  remove,
   //   getEmptystory,
   //   addstoryMsg,
 };
@@ -19,15 +19,7 @@ _createStories();
 // async function query(filterBy = { txt: "", price: 0 }) {
 async function query() {
   var stories = await storageService.query(STORAGE_KEY);
-  //   if (filterBy.txt) {
-  //     const regex = new RegExp(filterBy.txt, "i");
-  //     stories = stories.filter(
-  //       (story) => regex.test(story.vendor) || regex.test(story.description)
-  //     );
-  //   }
-  //   if (filterBy.price) {
-  //     stories = stories.filter((story) => story.price <= filterBy.price);
-  //   }
+
   console.log(" story service", stories);
   return stories;
 }
@@ -47,7 +39,7 @@ async function save(story) {
     savedstory = await storageService.put(STORAGE_KEY, story);
   } else {
     // Later, owner is set by the backend
-    story.owner = userService.getLoggedinUser();
+    story.owner = userService.getLoggedInUser();
     savedstory = await storageService.post(STORAGE_KEY, story);
   }
   return savedstory;
@@ -113,6 +105,7 @@ function createStory() {
             {
               _id: "u105",
               fullname: "Bob",
+              username: "Bobi",
               imgUrl:
                 "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
             },
@@ -132,14 +125,17 @@ function createStory() {
       ],
       likedBy: [
         {
-          _id: "u105",
+          // _id: "u105",
+          _id: "u101",
           fullname: "Bob",
+          username: "Bobi",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
         {
           _id: "u106",
           fullname: "Dob",
+          username: "Dobi",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },

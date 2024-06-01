@@ -28,6 +28,7 @@ export function RootCmp() {
             ))} */}
           <Route path="/" element={<HomePage />}>
             {/* <Route path="/" element={<AppIndex />}> */}
+            {/* <Route path="/p/:storyid" element={<StoryModal />} /> */}
             <Route path="/explore" element={<Explore />} />
             <Route path="/direct/inbox" element={<Messages />} />
             <Route path="/:username" element={<UserDetails />} />

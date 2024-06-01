@@ -7,13 +7,15 @@ import share from "../assets/img/share.svg";
 import menu_dots from "../assets/img/menu_dots.svg";
 import { StoryDate } from "./StoryDate";
 import { StoryIcons } from "./StoryIcons";
+
+import * as actions from "../store/story.actions";
 // import dot from "../assets/img/dot.svg";
 
-export function MainView({ stories, user }) {
+export function MainView({ stories, user, updateStory }) {
   console.log(stories);
-  console.log(user);
+  // console.log(user);
   var relavantStories = getRelevantStories();
-  console.log("stories to display", relavantStories);
+  // console.log("stories to display", relavantStories);
 
   function getRelevantStories() {
     const followingIds = [];
@@ -21,7 +23,9 @@ export function MainView({ stories, user }) {
     if (user) {
       user.following.map((profile) => console.log(profile._id));
       user.following.map((profile) => followingIds.push(profile._id));
-      console.log(followingIds);
+      followingIds.push(user._id);
+      // console.log(followingIds);
+
       if (followingIds != [] && stories) {
         stories.map((story) =>
           followingIds.includes(story.by._id)
@@ -29,7 +33,7 @@ export function MainView({ stories, user }) {
             : ""
         );
       }
-      console.log(storiesToDisplay);
+      console.log("stories to display", storiesToDisplay);
     }
     return storiesToDisplay;
   }
@@ -51,18 +55,9 @@ export function MainView({ stories, user }) {
                     <img src={story.by.imgUrl}></img>
                   </button>
                   <button>{story.by.username}</button>
-                  {/* <span className="fs40"> ·</span> */}
-                  {/* <img src={dot} className="date"></img> */}
                   <span> • </span>
                   <span>
-                    {console.log("test")}
-                    {/* {Math.floor(
-                      (new Date(story.createdAt) - new Date()) /
-                        (1000 * 60 * 60 * 24)
-                    ) > 6 ?  Math.floor(
-                      (new Date(story.createdAt) - new Date()) /
-                        (1000 * 60 * 60 * 24 * 7) } */}
-                    {/* .toLocaleDateString("en-US")} */}
+                    {/* {console.log("test")} */}
                     <StoryDate StoryDate={story.createdAt} />
                   </span>
                 </div>
@@ -75,37 +70,13 @@ export function MainView({ stories, user }) {
               <div>
                 <img src={story.imgUrl}></img>
               </div>
-              {/* <div className="container"> */}
-              {/* <div className="card-btn flex">
-                <div>
-                  {postBtns.map((btn, ind) => (
-                    <button className="post-btn" key={ind}>
-                      <img src={btn}></img>
-                    </button>
-                  ))}
-                </div>
-                <div>
-                  <button className="save-btn">
-                    <img src={bookmark}></img>
-                  </button>
-                </div>
-              </div>
-              <div>130 likes</div> */}
-              <StoryIcons Story={story} />
+              <StoryIcons Story={story} user={user} updateStory={updateStory} />
               <div className="card-comment">
                 {/* <p> */}
                 <div className="story-txt">
                   <span>{story.by.username} </span>
                   {story.txt}
                 </div>
-                {/* {story.comments.map((comment, ind) => (
-                  <div key={ind}>
-                    <span>{comment.by.fullname} </span>
-                    {comment.txt}
-                  </div>
-                ))} */}
-                {/* </p> */}
-
                 <div>
                   <button>View all {story.comments.length} comments</button>
                 </div>
@@ -122,7 +93,6 @@ export function MainView({ stories, user }) {
         })}
       </article>
 
-      {/* </div> */}
       <aside className="suggested-profiles"> suggested profiles</aside>
     </section>
   );
