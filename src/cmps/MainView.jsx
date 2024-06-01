@@ -13,12 +13,11 @@ import { AddComment } from "./AddComment";
 import { useNavigate } from "react-router";
 // import dot from "../assets/img/dot.svg";
 
-export function MainView({ stories, user, updateStory }) {
+export function MainView({ stories, user, updateStory, openStoryModal }) {
   const navigate = useNavigate();
   console.log(stories);
-  // console.log(user);
+
   var relavantStories = getRelevantStories();
-  // console.log("stories to display", relavantStories);
 
   function getRelevantStories() {
     const followingIds = [];
@@ -27,7 +26,6 @@ export function MainView({ stories, user, updateStory }) {
       user.following.map((profile) => console.log(profile._id));
       user.following.map((profile) => followingIds.push(profile._id));
       followingIds.push(user._id);
-      // console.log(followingIds);
 
       if (followingIds != [] && stories) {
         stories.map((story) =>
@@ -45,9 +43,6 @@ export function MainView({ stories, user, updateStory }) {
 
   return (
     <section className="main-view">
-      {/* <div className="card"> */}
-      {/* {relavantStories.map((story, ind) => {
-          return ( */}
       <article className="cards flex column">
         {relavantStories.map((story, ind) => {
           return (
@@ -60,7 +55,6 @@ export function MainView({ stories, user, updateStory }) {
                   <button>{story.by.username}</button>
                   <span> • </span>
                   <span>
-                    {/* {console.log("test")} */}
                     <StoryDate StoryDate={story.createdAt} />
                   </span>
                 </div>
@@ -73,7 +67,12 @@ export function MainView({ stories, user, updateStory }) {
               <div>
                 <img src={story.imgUrl}></img>
               </div>
-              <StoryIcons Story={story} user={user} updateStory={updateStory} />
+              <StoryIcons
+                Story={story}
+                user={user}
+                updateStory={updateStory}
+                openStoryModal={openStoryModal}
+              />
               <div className="card-comment">
                 {/* <p> */}
                 <div className="story-txt">
@@ -81,26 +80,20 @@ export function MainView({ stories, user, updateStory }) {
                   {story.txt}
                 </div>
                 <div>
-                  <button onClick={() => navigate(`/p/${story._id}`)}>
+                  {/* <button onClick={() => navigate(`/p/${story._id}`)}> */}
+                  <button onClick={() => openStoryModal(story)}>
                     View all {story.comments.length} comments
                   </button>
                 </div>
                 <AddComment Story={story} user={user} />
-                {/* <div>
-                  <input
-                    type="text"
-                    id="comment"
-                    placeholder="Add a comment..."
-                  ></input>
-                  <button>Post</button>
-                </div> */}
               </div>
             </div>
           );
         })}
       </article>
 
-      <aside className="suggested-profiles"> suggested profiles</aside>
+      {/* <aside className="suggested-profiles"> suggested profiles</aside> */}
+      <aside className="suggested-profiles"></aside>
     </section>
   );
 }

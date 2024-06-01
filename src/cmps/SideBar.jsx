@@ -21,7 +21,7 @@ export function SideBar({ user }) {
     { field: "Explore", path: "/explore", icon: explore, onClick: "" },
     { field: "Messages", path: "/direct/inbox", icon: message, onClick: "" },
     { field: "Create", path: "", icon: add, onClick: createStory },
-    { field: "Profile", path: `/${user._id}`, icon: profile, onClick: "" },
+    { field: "Profile", path: `/${user._id}`, icon: user.imgUrl, onClick: "" },
   ];
 
   function createStory() {

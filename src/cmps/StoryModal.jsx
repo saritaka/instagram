@@ -14,10 +14,8 @@ export function StoryModal() {
   const storyId = params.storyid;
   const navigate = useNavigate();
   const stories = useSelector((storeState) => storeState.storyModule.stories);
-  // const location = useLocation().pathname;
 
   console.log("stores in story modal", stories);
-  // console.log("location in story modal", location.slice(3));
 
   const story = getStory();
   console.log("the story", story);
@@ -25,14 +23,13 @@ export function StoryModal() {
 
   function getStory() {
     if (stories) {
-      // const story_ = stories.filter((story) => story._id === location.slice(3));
       const story_ = stories.filter((story) => story._id === storyId);
       return story_;
     }
   }
 
   return (
-    <section className="story-modal flex">
+    <div className="story-modal flex">
       <button className="modal-btn" onClick={() => navigate("/")}>
         <img src={close}></img>
       </button>
@@ -87,6 +84,6 @@ export function StoryModal() {
         </div>
       </div>
       <div>{/* <StoryIcons Story={story[0]} /> */}</div>
-    </section>
+    </div>
   );
 }

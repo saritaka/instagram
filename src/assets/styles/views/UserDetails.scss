@@ -1,0 +1,78 @@
+.profile-page {
+  //   display: flex;
+  //   flex-direction: column;
+  margin: 0 104px 30px 104px;
+  padding: 30px 20px 0 20px;
+  width: em(935px);
+  height: em(763px);
+
+  .profile-header {
+    // display: grid;
+    display: flex;
+    justify-content: center;
+
+    .header-profile-img {
+      width: em(284px);
+      height: em(400px);
+      display: flex;
+      justify-content: center;
+      //   padding-top: em(30px);
+
+      img {
+        width: em(150px);
+        height: em(150px);
+        border-radius: 50%;
+      }
+    }
+    .header-details {
+      display: flex;
+      flex-direction: column;
+      width: em(500px);
+      height: em(400px);
+
+      .profile-btns {
+        background-color: rgb(239, 239, 239);
+        padding: 0 16px;
+        // width: 110px;
+        height: 32px;
+        color: black;
+        border-radius: 2px;
+      }
+
+      .profile-info {
+        color: black;
+      }
+    }
+  }
+  .profile-posts-options {
+    display: flex;
+    justify-content: center;
+
+    button {
+      color: rgb(115, 115, 115);
+      font-size: 12px;
+      margin: 0 0 0 6px;
+      margin-right: em(50px);
+      height: em(52px);
+      padding: 0;
+    }
+
+    img {
+      width: em(18px);
+      height: em(18px);
+    }
+
+    button:focus {
+      border-top: 1px solid black;
+    }
+  }
+  hr {
+    margin: 0;
+    padding: 0;
+  }
+
+  .profile-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

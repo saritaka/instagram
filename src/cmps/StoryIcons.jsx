@@ -14,8 +14,7 @@ import { useEffect, useState } from "react";
 
 //returns the icons [like,comment,send,save] and number of likes
 
-export function StoryIcons({ Story, user, updateStory }) {
-  // console.log("story,", Story);
+export function StoryIcons({ Story, user, updateStory, openStoryModal }) {
   const [isliked, setLike] = useState(null);
   const [isSaved, setSave] = useState(null);
 
@@ -28,28 +27,20 @@ export function StoryIcons({ Story, user, updateStory }) {
   const location = useLocation().pathname;
 
   var postBtns = [
-    // { field: favorite, command: "like" },
     { field: comment, command: "comment" },
     { field: share, command: "share" },
   ];
 
   function changeState(field, update = false) {
-    // console.log("update", update);
-
     if (field === "likedBy") {
-      // console.log("the story before", Story);
       if (Story.likedBy) {
         var checkLikes = Story.likedBy.findIndex(
           (like) => like._id === user._id
         );
-        // console.log("check likes ", checkLikes);
-
         if (checkLikes != -1) {
           if (update) {
             Story.likedBy.splice(checkLikes, 1);
-            // console.log("the story after splice", Story);
             setLike(false);
-
             updateStory(Story);
           } else {
             setLike(true);
@@ -71,7 +62,6 @@ export function StoryIcons({ Story, user, updateStory }) {
 
     if (field === "savedStoryIds") {
       if (user.savedStoryIds.includes(Story._id)) {
-        // debugger;
         if (update) {
           var ind = user.savedStoryIds.findIndex(
             (story) => story._id === Story._id
@@ -83,7 +73,6 @@ export function StoryIcons({ Story, user, updateStory }) {
           setSave(true);
         }
       } else {
-        // debugger;
         if (update) {
           user.savedStoryIds.push(Story._id);
           setSave(true);
@@ -93,8 +82,6 @@ export function StoryIcons({ Story, user, updateStory }) {
         }
       }
     }
-    // console.log("the story after", Story);
-    // console.log("the user after", user);
   }
 
   function btnAction(command) {
@@ -105,6 +92,7 @@ export function StoryIcons({ Story, user, updateStory }) {
         }
         console.log("comment1");
         navigate(`/p/${Story._id}`);
+
         // <StoryModal />;
         break;
       case "share":

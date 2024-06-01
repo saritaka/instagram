@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 import { loadStories } from "../store/story.actions";
 // import * as actions from "../store/story.actions";
@@ -15,8 +15,12 @@ import { UserDetails } from "./UserDetails";
 import { StoryModal } from "../cmps/StoryModal";
 
 export function HomePage() {
+  const [openModal, setModal] = useState(false);
+  console.log("openModal", openModal);
+
   const params = useParams();
   const location = useLocation().pathname;
+  const navigate = useNavigate();
 
   // console.log("params", params.storyid);
   // console.log("location.pathname", useLocation().pathname);
@@ -43,6 +47,12 @@ export function HomePage() {
     }
   }
 
+  function openStoryModal(story) {
+    setModal(!openModal);
+    navigate(`/p/${story._id}`);
+    console.log("setModal", openModal);
+  }
+
   return (
     <section>
       <div className="home-page">
@@ -55,14 +65,19 @@ export function HomePage() {
               stories={stories}
               user={user}
               updateStory={onUpdateStory}
+              openStoryModal={openStoryModal}
             />
           )}
           {location == "/explore" && <Explore />}
           {location == "/direct/inbox" && <Messages />}
-          {location == `/${user._id}` && <UserDetails />}
+          {location == `/${user._id}` && (
+            <UserDetails user={user} stories={stories} />
+          )}
+          {/* {openModal ? <StoryModal /> : ""} */}
         </div>
+        {openModal ? <StoryModal /> : ""}
       </div>
-      {location == "/p/:storyId}" && <StoryModal />}
+      {/* {location == "/p/:storyId}" && <StoryModal />} */}
     </section>
   );
 }
