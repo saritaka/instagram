@@ -7,6 +7,8 @@ import favorite from "../assets/img/favorite.svg";
 import favorite_filled from "../assets/img/favorite_FILL1.svg";
 import share from "../assets/img/share.svg";
 
+import { updateUser } from "../store/user.actions";
+
 import { StoryModal } from "./StoryModal";
 import { useEffect, useState } from "react";
 
@@ -32,7 +34,6 @@ export function StoryIcons({ Story, user, updateStory }) {
   ];
 
   function changeState(field, update = false) {
-    // console.log(story);
     console.log("update", update);
 
     if (field === "likedBy") {
@@ -65,28 +66,36 @@ export function StoryIcons({ Story, user, updateStory }) {
             updateStory(Story);
           }
         }
-        // Story.likedBy.map((like, ind) => {
-        //   if (like._id === user._id) {
-        //     debugger;
-
-        //   // } else {
-        //   }
-        //       })
-        // }
       }
     }
 
     if (field === "savedStoryIds") {
-      user.savedStoryIds.includes(Story._id) ? setSave(true) : "";
+      if (user.savedStoryIds.includes(Story._id)) {
+        // debugger;
+        if (update) {
+          var ind = user.savedStoryIds.findIndex(
+            (story) => story._id === Story._id
+          );
+          user.savedStoryIds.splice(ind, 1);
+          setSave(false);
+          updateUser(user);
+        } else {
+          setSave(true);
+        }
+      } else {
+        // debugger;
+        if (update) {
+          user.savedStoryIds.push(Story._id);
+          setSave(true);
+          updateUser(user);
+        } else {
+          setSave(false);
+        }
+      }
     }
-    // actions.updateStory(Story);
     console.log("the story after", Story);
-    // const updatedStory = {...Story, }
+    console.log("the user after", user);
   }
-
-  // const newStatus = { ...email, [field]: !email[field] };
-  // console.log("newstatus", newStatus);
-  // onUpdateEmail(newStatus);
 
   function btnAction(command) {
     switch (command) {
@@ -138,7 +147,8 @@ export function StoryIcons({ Story, user, updateStory }) {
           ))}
         </div>
         <div>
-          <button onClick={() => btnAction("save")}>
+          {/* <button onClick={() => btnAction("save")}> */}
+          <button onClick={() => changeState("savedStoryIds", true)}>
             {isSaved ? (
               <img src={bookmark_filled}></img>
             ) : (

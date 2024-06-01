@@ -8,6 +8,7 @@ import {
   // REMOVE_USER,
   SET_USER,
   SET_USERS,
+  UPDATE_USER,
   // SET_WATCHED_USER,
 } from "./user.reducer.js";
 
@@ -33,6 +34,15 @@ export async function loadUser() {
     console.log("UserActions: err in loadUser", err);
   } finally {
     store.dispatch({ type: LOADING_DONE });
+  }
+}
+
+export async function updateUser(user) {
+  try {
+    await userService.updateUser(user);
+    store.dispatch({ type: UPDATE_USER, user });
+  } catch (err) {
+    console.log("UserActions: err in updateUser", err);
   }
 }
 

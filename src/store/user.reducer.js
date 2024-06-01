@@ -7,6 +7,8 @@ export const SET_USER = "SET_USER";
 // export const SET_WATCHED_USER = "SET_WATCHED_USER";
 // export const REMOVE_USER = "REMOVE_USER";
 export const SET_USERS = "SET_USERS";
+export const UPDATE_USER = "UPDATE_USER";
+
 // export const SET_SCORE = "SET_SCORE";
 
 // export const SET_USER_STORIES = "SET_USER_STORIES";
@@ -50,6 +52,17 @@ export function userReducer(state = initialState, action) {
     case SET_USERS:
       newState = { ...state, users: action.users };
       break;
+
+    case UPDATE_USER:
+      newState = { ...state, user: action.user };
+
+    // return {
+    //   ...state,
+    //   stories: state.stories.map((story) =>
+    //     story._id === cmd.story._id ? cmd.story : story
+    //   ),
+    // };
+
     // case SET_SCORE:
     //   newState = { ...state, user: { ...state.user, score: action.score } };
     //   break;

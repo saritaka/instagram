@@ -5,7 +5,7 @@ const STORAGE_KEY_USER_DB = "user";
 
 const user = ["u100", "u101", "u200"];
 
-const loggedinUser = {
+var loggedinUser = {
   _id: "u101",
   username: "Sarit",
   password: "testtest",
@@ -33,6 +33,7 @@ export const userService = {
   // getDefaultFilter,
   getLoggedInUser,
   getUsers,
+  updateUser,
   // createUser,
 };
 
@@ -41,6 +42,11 @@ function getLoggedInUser() {
 }
 
 function getUsers() {
+  return user;
+}
+
+function updateUser(user) {
+  loggedinUser = user;
   return user;
 }
 
