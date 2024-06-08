@@ -16,7 +16,7 @@
     }
 
     .card {
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid rgba(219, 219, 219, 0.5);
 
       .card-header {
         align-items: center;
@@ -54,15 +54,15 @@
         button {
           padding-left: 0;
           margin-left: 0;
-          color: gray;
+          color: #737373;
         }
-        input {
-          border: none;
-          margin-bottom: rem(15px);
-        }
-        input:focus {
-          outline: none;
-        }
+        // input {
+        //   border: none;
+        //   margin-bottom: rem(15px);
+        // }
+        // input:focus {
+        //   outline: none;
+        // }
       }
     }
   }

@@ -10,9 +10,11 @@ export function UserDetails({ user, stories }) {
   const location = useLocation().pathname;
 
   function getUserStories() {
-    var storiesOfUser = stories.map((story) => story.by._id === user.id);
+    if (stories) {
+      var storiesOfUser = stories.map((story) => story.by._id === user.id);
 
-    return storiesOfUser;
+      return storiesOfUser;
+    }
   }
 
   var userStories = getUserStories();

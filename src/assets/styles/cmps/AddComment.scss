@@ -11,9 +11,25 @@
   input {
     width: 32em;
     overflow-wrap: break-word;
+    border: none;
+    margin-bottom: rem(15px);
   }
 
+  input:focus {
+    outline: none;
+  }
+
+  // button {
+  //   padding: 0;
+  // }
   button {
-    padding: 0;
+    padding-left: 0;
+    margin-left: 0;
+    color: $clr-primary-btn;
+    font-weight: 600;
+  }
+
+  button:hover {
+    color: $clr-primary-btn-hover;
   }
 }

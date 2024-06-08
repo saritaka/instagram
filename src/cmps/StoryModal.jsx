@@ -6,6 +6,7 @@ import favorite from "../assets/img/favorite.svg";
 import menu from "../assets/img/menu_dots.svg";
 import { StoryDate } from "./StoryDate";
 import { StoryIcons } from "./StoryIcons";
+import { AddComment } from "./AddComment";
 
 // export function StoryModal({ storyId }) {
 export function StoryModal() {
@@ -14,6 +15,8 @@ export function StoryModal() {
   const storyId = params.storyid;
   const navigate = useNavigate();
   const stories = useSelector((storeState) => storeState.storyModule.stories);
+
+  const user = useSelector((storeState) => storeState.userModule.user);
 
   console.log("stores in story modal", stories);
 
@@ -29,61 +32,80 @@ export function StoryModal() {
   }
 
   return (
-    <div className="story-modal flex">
-      <button className="modal-btn" onClick={() => navigate("/")}>
+    <section className="modal">
+      <button className="close" onClick={() => navigate("/")}>
         <img src={close}></img>
       </button>
-      <div className="story-content">
-        <div className="picture">
+      <div className="modal-content">
+        <div className="story-picture">
           <img src={story[0].imgUrl}></img>
         </div>
-        <div className="details fs14">
-          <div className="details-header flex">
-            <div className="flex">
-              <button>
-                <img src={story[0].by.imgUrl} className="profile-pic"></img>
+        <div className="story-details fs14">
+          <div className=" story-header flex align-center">
+            <div className="flex align-center fs14">
+              <button className="m0 p0">
+                <img
+                  src={story[0].by.imgUrl}
+                  className="profile-pic img32"
+                ></img>
               </button>
               <a className="profile-btn">{story[0].by.username}</a>
             </div>
             <div>
-              <button>
-                <img src={menu} className="icon"></img>
+              <button className="m0 p0">
+                <img src={menu} className="icon img24"></img>
               </button>
             </div>
           </div>
-          <div className="flex details-text">
-            <div>
-              <button>
-                <img src={story[0].by.imgUrl} className="profile-pic"></img>
-              </button>
-            </div>
-            <div className="fs16">
-              <a className="fs14 profile-btn">{story[0].by.username}</a>
-              {story[0].txt}
-              <div className="fs14"></div>
-              <StoryDate StoryDate={story[0].createdAt} />
-            </div>
-          </div>
-          <div className="flex details-comments column">
-            {story[0].comments.map((comment, ind) => (
-              <div className="flex align-center" key={ind}>
-                <div>
-                  <button>
-                    <img src={comment.by.imgUrl} className="profile-pic"></img>
-                  </button>
 
-                  <a className="profile-btn">{comment.by.username}</a>
-                  <span>{comment.txt}</span>
+          <div className="story-comments flex">
+            <div className="current-story-txt flex">
+              <div>
+                <button className="m0 p0">
+                  <img
+                    src={story[0].by.imgUrl}
+                    className="profile-pic img32"
+                  ></img>
+                </button>
+              </div>
+              <div className="story-content">
+                <a className="profile-btn">{story[0].by.username}</a>
+                <span> {story[0].txt}</span>
+              </div>
+            </div>
+
+            {story[0].comments.map((comment, ind) => (
+              <div className="comment flex">
+                <div className="flex">
+                  <div>
+                    <button className="m0 p0">
+                      <img
+                        src={comment.by.imgUrl}
+                        className="profile-pic img32"
+                      ></img>
+                    </button>
+                  </div>
+                  <div className="story-content">
+                    <a className="profile-btn"> {comment.by.username} </a>
+                    <span> {comment.txt}</span>
+                  </div>
                 </div>
-                <div className="comment-like">
-                  <img src={favorite}></img>
+                <div className="flex align-center">
+                  <img src={favorite} className="img12"></img>
                 </div>
               </div>
             ))}
           </div>
+
+          <div className="story-body">
+            <StoryIcons Story={story[0]} user={user} />
+            <StoryDate StoryDate={story[0].createdAt} />
+          </div>
+          <div className="story-body">
+            <AddComment Story={story[0]} user={user} />
+          </div>
         </div>
       </div>
-      <div>{/* <StoryIcons Story={story[0]} /> */}</div>
-    </div>
+    </section>
   );
 }

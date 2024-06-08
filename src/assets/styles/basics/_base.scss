@@ -49,11 +49,49 @@ p {
 
 a {
   text-decoration: none;
+  font-weight: 500;
+  margin-left: 14px;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 button {
   background-color: $clr-primary-background;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.p0 {
+  padding: 0;
+}
+
+.main-app {
+  display: grid;
+  grid-template-areas: "sidemenu main";
+  @include for-wide-layout {
+    grid-template-columns: minmax(auto, $normal-breakpoint);
+  }
+
+  .side {
+    grid-area: sidemenu;
+    @include for-wide-layout {
+      width: em(220px);
+    }
+    padding: 8px 12px 20px 12px;
+  }
+
+  .container {
+    grid-area: main;
+    border-left: em(1px) solid rgb(219, 219, 219);
+    width: 100vw;
+  }
+}
+
+.profile-pic {
+  border-radius: 50%;
 }

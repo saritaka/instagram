@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { updateStory } from "../store/story.actions";
 
 export function AddComment({ Story, user }) {
   const [iscomment, setComment] = useState("");
@@ -7,7 +8,7 @@ export function AddComment({ Story, user }) {
   console.log("story in add comments", Story);
 
   function addComment() {
-    debugger;
+    // debugger;
     Story.comments.push({
       id: "c1234",
       by: {
@@ -19,6 +20,7 @@ export function AddComment({ Story, user }) {
       txt: iscomment,
       likedBy: [],
     });
+    updateStory(Story);
   }
 
   function handleChange(ev) {

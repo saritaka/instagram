@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router";
 
 import { loadStories } from "../store/story.actions";
 // import * as actions from "../store/story.actions";
@@ -55,28 +55,36 @@ export function HomePage() {
 
   return (
     <section>
-      <div className="home-page">
-        <div className="side-nav">
-          <SideBar user={user} />
-        </div>
-        <div className="main-view">
-          {location == "/" && (
+      <MainView
+        stories={stories}
+        user={user}
+        updateStory={onUpdateStory}
+        openStoryModal={openStoryModal}
+      />
+      {/* <div className="home-page"> */}
+      {/* <div className="side-nav"> */}
+      {/* <SideBar user={user} /> */}
+      {/* </div> */}
+      {/* <div className="main-view"> */}
+      {/* {location == "/" && (
             <MainView
               stories={stories}
               user={user}
               updateStory={onUpdateStory}
               openStoryModal={openStoryModal}
             />
-          )}
-          {location == "/explore" && <Explore />}
-          {location == "/direct/inbox" && <Messages />}
-          {location == `/${user._id}` && (
+          )} */}
+      {/* {location == "/explore" && <Explore />} */}
+      {/* {location == "/direct/inbox" && <Messages />} */}
+      {/* {location == `/${user._id}` && (
             <UserDetails user={user} stories={stories} />
-          )}
-          {/* {openModal ? <StoryModal /> : ""} */}
-        </div>
-        {openModal ? <StoryModal /> : ""}
-      </div>
+          )} */}
+      {/* {openModal ? <StoryModal /> : ""} */}
+      {/* </div> */}
+      {openModal ? <StoryModal /> : ""}
+      {openModal ? <Outlet /> : ""}
+      <Outlet />
+      {/* </div> */}
       {/* {location == "/p/:storyId}" && <StoryModal />} */}
     </section>
   );

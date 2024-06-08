@@ -70,8 +70,8 @@ export function MainView({ stories, user, updateStory, openStoryModal }) {
               <StoryIcons
                 Story={story}
                 user={user}
-                updateStory={updateStory}
-                openStoryModal={openStoryModal}
+                // updateStory={updateStory}
+                // openStoryModal={openStoryModal}
               />
               <div className="card-comment">
                 {/* <p> */}

@@ -13,7 +13,8 @@ import * as actions from "../store/story.actions";
 
 // import { CreateStory } from "./CreateStory";
 
-export function SideBar({ user }) {
+// export function SideBar({ user }) {
+export function SideBar() {
   const navigate = useNavigate();
   const navButtons = [
     { field: "Home", path: "", icon: home, onClick: "" },
@@ -21,7 +22,7 @@ export function SideBar({ user }) {
     { field: "Explore", path: "/explore", icon: explore, onClick: "" },
     { field: "Messages", path: "/direct/inbox", icon: message, onClick: "" },
     { field: "Create", path: "", icon: add, onClick: createStory },
-    { field: "Profile", path: `/${user._id}`, icon: user.imgUrl, onClick: "" },
+    // { field: "Profile", path: `/${user._id}`, icon: user.imgUrl, onClick: "" },
   ];
 
   function createStory() {

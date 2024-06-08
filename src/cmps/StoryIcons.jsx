@@ -8,13 +8,14 @@ import favorite_filled from "../assets/img/favorite_FILL1.svg";
 import share from "../assets/img/share.svg";
 
 import { updateUser } from "../store/user.actions";
+import { updateStory } from "../store/story.actions";
 
 import { StoryModal } from "./StoryModal";
 import { useEffect, useState } from "react";
 
 //returns the icons [like,comment,send,save] and number of likes
 
-export function StoryIcons({ Story, user, updateStory, openStoryModal }) {
+export function StoryIcons({ Story, user }) {
   const [isliked, setLike] = useState(null);
   const [isSaved, setSave] = useState(null);
 
