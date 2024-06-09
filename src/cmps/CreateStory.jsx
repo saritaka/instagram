@@ -8,7 +8,7 @@ import { utilService } from "../services/util.service";
 import { uploadService } from "../services/upload.service";
 
 export function CreateStory({ setModal }) {
-  const [file, setFile] = useState(false);
+  const [file, setFile] = useState(null);
   const [storyText, setStoryText] = useState(null);
 
   console.log("file in create story", file);
@@ -68,7 +68,7 @@ export function CreateStory({ setModal }) {
             ""
           )}
           Create new post
-          {file ? <button onClick={() => createNewStory()}>Share</button> : ""}
+          {file ? <button onClick={() => createNewStory()}>Share</button> : " "}
         </div>
         {file ? (
           <div className="flex">

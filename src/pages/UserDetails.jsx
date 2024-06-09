@@ -1,23 +1,28 @@
-import { useLocation } from "react-router";
+import { useParams } from "react-router";
 
 import save from "../assets/img/bookmark.svg";
 import grid from "../assets/img/grid.svg";
 import tagged from "../assets/img/tagged.svg";
 import settings from "../assets/img/settings.svg";
+import { useSelector } from "react-redux";
 
-export function UserDetails({ user, stories }) {
-  console.log("user", user);
-  const location = useLocation().pathname;
+// export function UserDetails({ user, stories }) {
+export function UserDetails() {
+  const stories = useSelector((storeState) => storeState.storyModule.stories);
+  const user = useSelector((storeState) => storeState.userModule.user);
+  const params = useParams();
+  // console.log("params", params);
+  console.log(stories);
 
   function getUserStories() {
     if (stories) {
-      var storiesOfUser = stories.map((story) => story.by._id === user.id);
-
+      var storiesOfUser = stories.filter((story) => story.by._id === user._id);
       return storiesOfUser;
     }
   }
 
   var userStories = getUserStories();
+  console.log("userStories", userStories);
 
   return (
     <div className="profile-page">
@@ -33,25 +38,26 @@ export function UserDetails({ user, stories }) {
           </div>
           <div>
             <button className="profile-info fs16">
-              {userStories.length} posts
+              <span>{userStories.length} </span> posts
             </button>
             <button className="profile-info fs16">
-              {user.followers.length} followers
+              <span> {user.followers.length} </span>followers
             </button>
             <button className="profile-info fs16">
-              {user.following.length} following
+              <span>{user.following.length} </span>following
             </button>
           </div>
-          <div className="fs14">{user.fullname}</div>
+          <div className="fs14 bold">{user.fullname}</div>
         </div>
         {/* <img src={settings}></img> */}
       </div>
-      <hr />
+
       <div className="profile-posts-options">
         <button>
           <img src={grid}></img>
           POSTS
         </button>
+
         <button>
           <img src={save}></img>
           SAVED
@@ -62,12 +68,18 @@ export function UserDetails({ user, stories }) {
         </button>
       </div>
       <div className="profile-posts">
-        <div>
-          {/* <img src={userStories[0].imgUrl}></img> */}
-          test
+        {userStories
+          ? userStories.map((story) => (
+              <div>
+                <img src={story.imgUrl}></img>
+              </div>
+            ))
+          : ""}
+        {/* <div>
+          <img src={userStories[0].imgUrl}></img>
         </div>
         <div>test</div>
-        <div>test</div>
+        <div>test</div> */}
       </div>
     </div>
   );

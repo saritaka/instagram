@@ -19,9 +19,11 @@
       //   padding-top: em(30px);
 
       img {
-        width: em(150px);
-        height: em(150px);
+        margin-top: em(25px);
+        width: em(140px);
+        height: em(140px);
         border-radius: 50%;
+        object-fit: cover;
       }
     }
     .header-details {
@@ -36,30 +38,44 @@
         // width: 110px;
         height: 32px;
         color: black;
-        border-radius: 2px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 12px;
       }
 
       .profile-info {
         color: black;
+        margin: em(30px) 0;
+        padding-left: 0;
+      }
+
+      span {
+        font-size: 16px;
+        margin: 0 6px 0 0;
+        padding: 0;
+        font-weight: 600;
       }
     }
   }
   .profile-posts-options {
+    border-top: 1px solid rgba(219, 219, 219, 0.5);
     display: flex;
     justify-content: center;
 
     button {
+      display: flex;
       color: rgb(115, 115, 115);
       font-size: 12px;
-      margin: 0 0 0 6px;
-      margin-right: em(50px);
+      padding: 20px 0 0 0px;
+      margin: 0 em(50px) em(20px) 0;
       height: em(52px);
-      padding: 0;
+      // padding: 0;
     }
 
     img {
       width: em(18px);
       height: em(18px);
+      margin-right: em(5px);
     }
 
     button:focus {
@@ -74,5 +90,21 @@
   .profile-posts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    // background-color: yellow;
+    gap: 4px;
+    div {
+      // background-color: pink;
+      // border: 1px solid black;
+      width: 335px;
+      height: 335px;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      // width: 400px;
+      // height: 400px;
+    }
   }
 }
