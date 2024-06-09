@@ -4,7 +4,9 @@ export function StoryDate({ StoryDate }) {
 
   function diffWeeks(date1) {
     const date2 = new Date();
-    console.log("gettime,", date2.getTime());
+
+    // console.log("gettime,", date2.getTime());
+
     var diff = (date2.getTime() - date1) / 1000;
     diff /= 60 * 60 * 24 * 7;
     // console.log("diff-w", diff);

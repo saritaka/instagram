@@ -5,7 +5,7 @@ export function AddComment({ Story, user }) {
   const [iscomment, setComment] = useState("");
   const [isPostEnabled, setBtn] = useState(true);
 
-  console.log("story in add comments", Story);
+  // console.log("story in add comments", Story);
 
   function addComment() {
     // debugger;
