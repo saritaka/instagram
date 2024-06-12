@@ -38,6 +38,7 @@ export function storyReducer(state = initialState, cmd = {}) {
 
     default:
       console.log("default story reducer");
+      console.log("State:", initialState);
       return state;
   }
 }

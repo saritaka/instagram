@@ -11,11 +11,13 @@ import { StoryIcons } from "./StoryIcons";
 import * as actions from "../store/story.actions";
 import { AddComment } from "./AddComment";
 import { useNavigate } from "react-router";
+import { SuggestedProfiles } from "./SuggestedProfiles";
 // import dot from "../assets/img/dot.svg";
 
-export function MainView({ stories, user, updateStory, openStoryModal }) {
+// export function MainView({ stories, user, updateStory, openStoryModal }) {
+export function MainView({ stories, user, users }) {
   const navigate = useNavigate();
-  console.log(stories);
+  // console.log(stories);
 
   var relavantStories = getRelevantStories();
 
@@ -34,7 +36,7 @@ export function MainView({ stories, user, updateStory, openStoryModal }) {
             : ""
         );
       }
-      console.log("stories to display", storiesToDisplay);
+      // console.log("stories to display", storiesToDisplay);
     }
     return storiesToDisplay;
   }
@@ -81,7 +83,11 @@ export function MainView({ stories, user, updateStory, openStoryModal }) {
                 </div>
                 <div>
                   {/* <button onClick={() => navigate(`/p/${story._id}`)}> */}
-                  <button onClick={() => openStoryModal(story)}>
+                  <button
+                    className="view-comments-btn"
+                    // onClick={() => openStoryModal(story)}
+                    onClick={() => navigate(`/p/${story._id}`)}
+                  >
                     View all {story.comments.length} comments
                   </button>
                 </div>
@@ -92,8 +98,10 @@ export function MainView({ stories, user, updateStory, openStoryModal }) {
         })}
       </article>
 
-      {/* <aside className="suggested-profiles"> suggested profiles</aside> */}
-      <aside className="suggested-profiles"></aside>
+      <aside className="suggested-profiles">
+        <SuggestedProfiles user={user} users={users} />
+      </aside>
+      {/* <aside className="suggested-profiles"></aside> */}
     </section>
   );
 }

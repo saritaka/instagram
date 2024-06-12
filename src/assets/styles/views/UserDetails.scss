@@ -72,6 +72,11 @@
       // padding: 0;
     }
 
+    button:focus {
+      color: black;
+      font-weight: $font-weight-system-medium;
+    }
+
     img {
       width: em(18px);
       height: em(18px);
@@ -105,6 +110,49 @@
       height: 100%;
       // width: 400px;
       // height: 400px;
+    }
+
+    .post {
+      position: relative;
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.3 ease;
+        background-color: rgba(0, 0, 0, 0.6);
+        // justify-content: space-between;
+        justify-content: center;
+
+        button {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          opacity: 0;
+        }
+
+        img {
+          width: em(20px);
+          height: em(20px);
+
+          // background-color: black;
+        }
+
+        span {
+          color: white;
+          margin: 0 25px 0 5px;
+        }
+      }
+    }
+
+    .post:hover .overlay {
+      opacity: 1;
     }
   }
 }

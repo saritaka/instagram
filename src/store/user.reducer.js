@@ -4,6 +4,8 @@ import { userService } from "../services/user.service.local.js";
 // export const DECREMENT = "DECREMENT";
 // export const CHANGE_COUNT = "CHANGE_COUNT";
 export const SET_USER = "SET_USER";
+export const SET_LoggedIn_USER = "SET_LoggedIn_USER";
+
 // export const SET_WATCHED_USER = "SET_WATCHED_USER";
 // export const REMOVE_USER = "REMOVE_USER";
 export const SET_USERS = "SET_USERS";
@@ -21,8 +23,10 @@ export const UPDATE_USER = "UPDATE_USER";
 
 const initialState = {
   // user: userService.getLoggedinUser(),
+  loggeduser: "",
   user: "",
-  users: [],
+  users: "",
+  getuser: "",
 };
 
 export function userReducer(state = initialState, action) {
@@ -37,8 +41,11 @@ export function userReducer(state = initialState, action) {
     // case CHANGE_COUNT:
     //   newState = { ...state, count: state.count + action.diff };
     //   break;
+    case SET_LoggedIn_USER:
+      newState = { ...state, loggeduser: action.loggeduser };
+      break;
     case SET_USER:
-      newState = { ...state, user: action.user };
+      newState = { ...state, getuser: action.getuser };
       break;
     // case SET_WATCHED_USER:
     //   newState = { ...state, watchedUser: action.user };
@@ -55,7 +62,7 @@ export function userReducer(state = initialState, action) {
 
     case UPDATE_USER:
       newState = { ...state, user: action.user };
-
+    // break;
     // return {
     //   ...state,
     //   stories: state.stories.map((story) =>

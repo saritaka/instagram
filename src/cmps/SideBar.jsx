@@ -18,7 +18,7 @@ import { useState } from "react";
 
 // export function SideBar({ user }) {
 export function SideBar() {
-  const user = useSelector((storeState) => storeState.userModule.user);
+  const user = useSelector((storeState) => storeState.userModule.loggeduser);
   const [openModal, setModal] = useState(false);
 
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export function SideBar() {
     { field: "Explore", path: "/explore", icon: explore, onClick: "" },
     { field: "Messages", path: "/direct/inbox", icon: message, onClick: "" },
     { field: "Create", path: "", icon: add, onClick: createStory },
-    { field: "Profile", path: `/${user._id}`, icon: user.imgUrl, onClick: "" },
+    { field: "Profile", path: `/${user._id}/`, icon: user.imgUrl, onClick: "" },
   ];
 
   function createStory() {

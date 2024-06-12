@@ -21,32 +21,45 @@ export function AddComment({ Story, user }) {
       likedBy: [],
     });
     updateStory(Story);
+    setComment("");
   }
 
   function handleChange(ev) {
+    console.log("ev", ev);
     console.log(ev.target.value);
     let comment = ev.target.value;
     setComment(comment);
+    console.log("ev.key", ev.target.key);
+    if (ev.key === "Enter") {
+      alert("test");
+    }
   }
 
   return (
     <section>
       <div className="add-comment">
-        <div>
-          <input
-            type="text"
-            id="comment"
-            placeholder="Add a comment..."
-            onChange={handleChange}
-          ></input>
-        </div>
-        <div>
-          {isPostEnabled ? (
-            <button onClick={() => addComment()}>Post</button>
-          ) : (
-            ""
-          )}
-        </div>
+        {/* <div className="add-comment-input flex align-center"> */}
+        <input
+          type="text"
+          id="comment"
+          value={iscomment}
+          placeholder={"Add a comment..."}
+          onChange={handleChange}
+          // onKeyDown={(e) => alert(e.key === "Enter")}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              addComment();
+            }
+          }}
+        ></input>
+        {/* </div> */}
+        {/* <div className="flex"> */}
+        {isPostEnabled ? (
+          <button onClick={() => addComment()}>Post</button>
+        ) : (
+          ""
+        )}
+        {/* </div> */}
       </div>
     </section>
   );

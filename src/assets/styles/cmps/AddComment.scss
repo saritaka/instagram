@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   div {
     height: 18px;
@@ -11,22 +11,35 @@
   input {
     width: 32em;
     overflow-wrap: break-word;
+    overflow: auto;
     border: none;
-    margin-bottom: rem(15px);
+    // margin-bottom: rem(10px);
+    // background-color: pink;
+    margin: auto 0;
+
+    // padding: 10px 0;
   }
 
   input:focus {
     outline: none;
   }
 
+  // .add-comment-input {
+  //   max-height: 100px;
+  //   overflow: scroll;
+  // }
+
   // button {
   //   padding: 0;
   // }
   button {
     padding-left: 0;
-    margin-left: 0;
+    // padding: 0;
+    // padding: auto 0;
+    // margin-left: 0;
     color: $clr-primary-btn;
     font-weight: 600;
+    margin: auto 0;
   }
 
   button:hover {

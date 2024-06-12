@@ -105,7 +105,6 @@ function createStory() {
             {
               _id: "u105",
               fullname: "Bob",
-              username: "Bobi",
               imgUrl:
                 "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
             },
@@ -121,7 +120,6 @@ function createStory() {
               "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
           },
           txt: "not good!",
-          likedBy: [],
         },
       ],
       likedBy: [
@@ -129,14 +127,12 @@ function createStory() {
           // _id: "u105",
           _id: "u101",
           fullname: "Bob",
-          username: "Bobi",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
         {
           _id: "u106",
           fullname: "Dob",
-          username: "Dobi",
           imgUrl:
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
@@ -193,7 +189,6 @@ function createStory() {
               "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpgg",
           },
           txt: "not good!",
-          likedBy: [],
         },
       ],
       likedBy: [

@@ -66,6 +66,10 @@ button {
   margin: 0;
 }
 
+.mb-10 {
+  margin-bottom: 10px;
+}
+
 .p0 {
   padding: 0;
 }
@@ -80,7 +84,7 @@ button {
   .side {
     grid-area: sidemenu;
     @include for-wide-layout {
-      width: em(220px);
+      width: em(300px);
     }
     padding: 8px 12px 20px 12px;
   }

@@ -1,0 +1,48 @@
+// .suggested-profiles {
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+.test {
+  //   background-color: pink;
+  height: 50vh;
+}
+.profile {
+  //   background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  max-width: 260px;
+  margin-bottom: 15px;
+  .profile-text {
+    align-items: start;
+    justify-content: center;
+    padding: em(5px);
+  }
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  button {
+    margin: 0;
+    color: black;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  span {
+    color: gray;
+  }
+}
+
+.follow-option button {
+  // padding-left: 0;
+  color: $clr-primary-btn;
+  font-weight: 600;
+  margin: auto 0;
+  font-size: 12px;
+}
+
+.follow-option:hover button {
+  color: $clr-primary-btn-hover;
+}

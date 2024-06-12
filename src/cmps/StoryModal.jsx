@@ -16,7 +16,7 @@ export function StoryModal() {
   const navigate = useNavigate();
   const stories = useSelector((storeState) => storeState.storyModule.stories);
 
-  const user = useSelector((storeState) => storeState.userModule.user);
+  const user = useSelector((storeState) => storeState.userModule.loggeduser);
 
   console.log("stores in story modal", stories);
 
@@ -33,7 +33,8 @@ export function StoryModal() {
 
   return (
     <section className="modal">
-      <button className="close" onClick={() => navigate("/")}>
+      {/* <button className="close" onClick={() => navigate("/")}> */}
+      <button className="close" onClick={() => navigate(-1)}>
         <img src={close}></img>
       </button>
       <div className="modal-content">
@@ -97,11 +98,11 @@ export function StoryModal() {
             ))}
           </div>
 
-          <div className="story-body">
+          <div className="story-modal-icons">
             <StoryIcons Story={story[0]} user={user} />
             <StoryDate StoryDate={story[0].createdAt} />
           </div>
-          <div className="story-body">
+          <div className="story-add-comment">
             <AddComment Story={story[0]} user={user} />
           </div>
         </div>

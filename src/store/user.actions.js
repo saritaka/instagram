@@ -9,13 +9,18 @@ import {
   SET_USER,
   SET_USERS,
   UPDATE_USER,
+  SET_LoggedIn_USER,
+
   // SET_WATCHED_USER,
 } from "./user.reducer.js";
 
 export async function loadUsers() {
   try {
     store.dispatch({ type: LOADING_START });
-    const users = await userService.getUsers();
+    // const users = await userService.getUsers();
+
+    const users = await userService.query();
+
     store.dispatch({ type: SET_USERS, users });
   } catch (err) {
     console.log("UserActions: err in loadUsers", err);
@@ -24,12 +29,13 @@ export async function loadUsers() {
   }
 }
 
-export async function loadUser() {
+export async function loadLoggedInUser() {
   try {
     store.dispatch({ type: LOADING_START });
-    const user = await userService.getLoggedInUser();
-    // console.log("user actions loaduser", { user });
-    store.dispatch({ type: SET_USER, user });
+    const loggeduser = await userService.getLoggedInUser();
+
+    console.log("user actions loaduser", { loggeduser });
+    store.dispatch({ type: SET_LoggedIn_USER, loggeduser });
   } catch (err) {
     console.log("UserActions: err in loadUser", err);
   } finally {
@@ -43,6 +49,17 @@ export async function updateUser(user) {
     store.dispatch({ type: UPDATE_USER, user });
   } catch (err) {
     console.log("UserActions: err in updateUser", err);
+  }
+}
+
+export async function loadUser(userId) {
+  try {
+    const getuser = await userService.getById(userId);
+    console.log("user in user actions", getuser, userId);
+    store.dispatch({ type: SET_USER, getuser });
+  } catch (err) {
+    showErrorMsg("Cannot load user");
+    console.log("Cannot load user", err);
   }
 }
 
@@ -96,15 +113,5 @@ export async function updateUser(user) {
 //   } catch (err) {
 //     console.log("Cannot logout", err);
 //     throw err;
-//   }
-// }
-
-// export async function loadUser(userId) {
-//   try {
-//     const user = await userService.getById(userId);
-//     store.dispatch({ type: SET_USER, user });
-//   } catch (err) {
-//     showErrorMsg("Cannot load user");
-//     console.log("Cannot load user", err);
 //   }
 // }

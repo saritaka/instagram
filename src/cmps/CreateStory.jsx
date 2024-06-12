@@ -13,7 +13,7 @@ export function CreateStory({ setModal }) {
 
   console.log("file in create story", file);
   // const navigate = useNavigate();
-  const user = useSelector((storeState) => storeState.userModule.user);
+  const user = useSelector((storeState) => storeState.userModule.loggeduser);
 
   function createNewStory() {
     var newStory = {
@@ -71,8 +71,9 @@ export function CreateStory({ setModal }) {
           {file ? <button onClick={() => createNewStory()}>Share</button> : " "}
         </div>
         {file ? (
-          <div className="flex">
+          <div className="flex approve-post">
             <div className="create-picture">
+              {/* <img src={file}></img> */}
               <img src={file}></img>
             </div>
             <div className="create-details">
@@ -83,10 +84,14 @@ export function CreateStory({ setModal }) {
                 <span>{user.username}</span>
               </div>
 
-              <input
+              {/* <input
                 onChange={updateText}
                 placeholder="Write a caption..."
-              ></input>
+              ></input> */}
+              <textarea
+                onChange={updateText}
+                placeholder="Write a caption..."
+              ></textarea>
             </div>
           </div>
         ) : (
