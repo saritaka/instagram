@@ -23,21 +23,22 @@ export function MainView({ stories, user, users }) {
 
   function getRelevantStories() {
     const followingIds = [];
-    const storiesToDisplay = [];
-    if (user) {
-      user.following.map((profile) => console.log(profile._id));
-      user.following.map((profile) => followingIds.push(profile._id));
-      followingIds.push(user._id);
+    // const storiesToDisplay = [];
+    const storiesToDisplay = stories || [];
+    // if (user) {
+    //   user.following.map((profile) => console.log(profile._id));
+    //   user.following.map((profile) => followingIds.push(profile._id));
+    //   followingIds.push(user._id);
 
-      if (followingIds != [] && stories) {
-        stories.map((story) =>
-          followingIds.includes(story.by._id)
-            ? storiesToDisplay.push(story)
-            : ""
-        );
-      }
-      // console.log("stories to display", storiesToDisplay);
-    }
+    //   if (followingIds != [] && stories) {
+    //     stories.map((story) =>
+    //       followingIds.includes(story.by._id)
+    //         ? storiesToDisplay.push(story)
+    //         : ""
+    //     );
+    //   }
+    //   // console.log("stories to display", storiesToDisplay);
+    // }
     return storiesToDisplay;
   }
 

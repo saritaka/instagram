@@ -1,0 +1,146 @@
+.explore-posts {
+  width: em(900px);
+  margin: 40px 40px 10px 160px;
+
+  .posts-grid {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+
+    grid-auto-flow: dense;
+    padding: 0;
+    margin: 0;
+
+    div {
+      width: 335px;
+      height: 335px;
+      padding: 0;
+      margin: 0;
+    }
+
+    div:nth-child(3),
+    div:nth-child(6),
+    div:nth-child(10n + 3),
+    div:nth-child(10n + 6) {
+      height: 100%;
+      grid-area: span 2 / span 1;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      // width: 400px;
+      // height: 400px;
+    }
+
+    .post {
+      position: relative;
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.3 ease;
+        background-color: rgba(0, 0, 0, 0.3);
+        // justify-content: space-between;
+        justify-content: center;
+
+        button {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          opacity: 0;
+        }
+
+        img {
+          width: em(20px);
+          height: em(20px);
+
+          // background-color: black;
+        }
+
+        span {
+          color: white;
+          margin: 0 25px 0 5px;
+        }
+      }
+    }
+
+    .post:hover .overlay {
+      opacity: 1;
+    }
+  }
+}
+
+// .profile-posts {
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-template-rows: auto;
+//   // background-color: yellow;
+//   gap: 4px;
+//   div {
+//     // background-color: pink;
+//     // border: 1px solid black;
+//     width: 335px;
+//     height: 335px;
+//   }
+//   img {
+//     object-fit: cover;
+//     width: 100%;
+//     height: 100%;
+//     // width: 400px;
+//     // height: 400px;
+//   }
+// }
+
+//     .post {
+//       position: relative;
+
+//       .overlay {
+//         position: absolute;
+//         top: 0;
+//         bottom: 0;
+//         left: 0;
+//         right: 0;
+//         height: 100%;
+//         width: 100%;
+//         opacity: 0;
+//         transition: 0.3 ease;
+//         background-color: rgba(0, 0, 0, 0.6);
+//         // justify-content: space-between;
+//         justify-content: center;
+
+//         button {
+//           height: 100%;
+//           width: 100%;
+//           margin: 0;
+//           padding: 0;
+//           opacity: 0;
+//         }
+
+//         img {
+//           width: em(20px);
+//           height: em(20px);
+
+//           // background-color: black;
+//         }
+
+//         span {
+//           color: white;
+//           margin: 0 25px 0 5px;
+//         }
+//       }
+//     }
+
+//     .post:hover .overlay {
+//       opacity: 1;
+//     }
+//   }

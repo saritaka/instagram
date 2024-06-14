@@ -15,6 +15,7 @@ import { UserDetails } from "./UserDetails";
 import { StoryModal } from "../cmps/StoryModal";
 
 export function HomePage() {
+  // debugger;
   // const [openModal, setModal] = useState(false);
   // console.log("openModal", openModal);
 
@@ -31,7 +32,7 @@ export function HomePage() {
   const users = useSelector((storeState) => storeState.userModule.users);
 
   // console.log("Homepage- stories", stories);
-  console.log("Homepage- user", user);
+  // console.log("Homepage- user", user);
   console.log("Homepage- users", users);
   console.log("Homepage- stories", stories);
 

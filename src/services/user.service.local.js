@@ -6,29 +6,29 @@ const STORAGE_KEY_USERS = "users";
 
 // const users = ["u100", "u101", "u200"];
 
-var loggedinUser = {
-  _id: "u101",
-  username: "sarit",
-  password: "testtest",
-  fullname: "Sarit Ak",
-  imgUrl:
-    "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
-  following: [
-    {
-      _id: "u100",
-      fullname: "Dob",
-      imgUrl: "http://some-img",
-    },
-  ],
-  followers: [
-    {
-      _id: "u105",
-      fullname: "Bob",
-      imgUrl: "http://some-img",
-    },
-  ],
-  savedStoryIds: ["s200", "s100"],
-};
+// var loggedinUser = {
+//   _id: "u101",
+//   username: "sarit",
+//   password: "testtest",
+//   fullname: "Sarit Ak",
+//   imgUrl:
+//     "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
+//   following: [
+//     {
+//       _id: "u300",
+//       fullname: "Dob",
+//       imgUrl: "http://some-img",
+//     },
+//   ],
+//   followers: [
+//     {
+//       _id: "u105",
+//       fullname: "Bob",
+//       imgUrl: "http://some-img",
+//     },
+//   ],
+//   savedStoryIds: ["s200", "s100"],
+// };
 
 export const userService = {
   query,
@@ -48,6 +48,10 @@ async function query() {
 }
 
 function getLoggedInUser() {
+  // return loggedinUser;
+  // console.log("util", utilService.loadFromStorage(STORAGE_KEY_USERS));
+  // console.log("util", utilService.loadFromStorage(STORAGE_KEY_USERS)[1]);
+  var loggedinUser = utilService.loadFromStorage(STORAGE_KEY_USERS)[1];
   return loggedinUser;
 }
 
@@ -62,7 +66,8 @@ function getById(userId) {
 async function updateUser(user) {
   // loggedinUser = user;
   // return user;
-  var savedUser = await storageService.post(STORAGE_KEY_USERS, user);
+  // debugger;
+  var savedUser = await storageService.put(STORAGE_KEY_USERS, user);
   return savedUser;
 }
 

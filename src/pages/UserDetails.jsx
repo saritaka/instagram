@@ -13,6 +13,7 @@ import { loadStories } from "../store/story.actions";
 
 // export function UserDetails({ user, stories }) {
 export function UserDetails() {
+  // debugger;
   const [selectedBtn, setSelectedBtn] = useState("posts");
 
   const stories = useSelector((storeState) => storeState.storyModule.stories);
@@ -21,7 +22,7 @@ export function UserDetails() {
   const users = useSelector((storeState) => storeState.userModule.users);
 
   var userId = useParams().username;
-  // console.log("userId", userId);
+  console.log("userId", userId);
 
   console.log("user in user details", user);
   // console.log("user in usertest details", usertest);
@@ -36,7 +37,7 @@ export function UserDetails() {
     loadStories();
     loadUser(userId);
     btnRef.current.focus();
-  }, []);
+  }, [userId]);
 
   function getUserStories() {
     if (stories) {
@@ -75,13 +76,13 @@ export function UserDetails() {
           </div>
           <div>
             <button className="profile-info fs16">
-              <span>{userStories.length} </span> posts
+              <span>{userStories ? userStories.length : 0} </span> posts
             </button>
             <button className="profile-info fs16">
-              <span> {user.followers.length} </span>followers
+              <span> {user ? user.followers.length : 0} </span>followers
             </button>
             <button className="profile-info fs16">
-              <span>{user.following.length} </span>following
+              <span>{user ? user.following.length : 0} </span>following
             </button>
           </div>
           <div className="fs14 bold">{user.fullname}</div>

@@ -7,9 +7,8 @@
 
   .cards {
     grid-column: 1/2;
-
     max-width: rem(468px);
-    margin: rem(50px) auto;
+    margin: rem(40px) auto;
     img {
       width: rem(468px);
       height: rem(468px);
@@ -19,6 +18,7 @@
 
     .card {
       border-bottom: 1px solid rgba(219, 219, 219, 0.5);
+      margin-top: em(15px);
 
       .card-header {
         align-items: center;
@@ -26,15 +26,18 @@
         span {
           margin: auto;
           padding-right: em(4px);
+          color: #737373;
+          font-weight: 400;
         }
         img {
-          width: rem(32px);
-          height: rem(32px);
+          width: rem(20px);
+          height: rem(20px);
           border-radius: 50%;
         }
         button {
           color: black;
           padding: 0;
+          font-weight: 700;
         }
         .date {
           width: em(10px);

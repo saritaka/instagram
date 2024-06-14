@@ -24,9 +24,9 @@ export const UPDATE_USER = "UPDATE_USER";
 const initialState = {
   // user: userService.getLoggedinUser(),
   loggeduser: "",
-  user: "",
-  users: "",
   getuser: "",
+  users: "",
+  user: "",
 };
 
 export function userReducer(state = initialState, action) {

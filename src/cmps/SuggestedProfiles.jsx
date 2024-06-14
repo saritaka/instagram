@@ -1,22 +1,32 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { FollowUnfollow } from "./FollowUnfollow";
 // import close from "../assets/img/gray_close.svg";
 
 export function SuggestedProfiles({ user, users }) {
+  // const [follow, setfollow] = useState(false);
   const navigate = useNavigate();
   // console.log("users in profiles", users);
   // console.log("user in profile", user);
 
-  function setFollow(id, add = false) {
-    var updateUser = users.filter((User, ind) => User._id === id);
+  // useEffect(() => {
+  //   console.log("got it");
+  // }, [follow]);
 
-    add
-      ? updateUser.followers.append({
-          _id: user._id,
-          fullname: user.fullname,
-          imgUrl: user.imgUrl,
-        })
-      : updateUser.followers.splice(ind, 1);
-  }
+  // function setFollow(id, add = false) {
+  //   var [updateUser, ind] = users.filter((User, ind) => User._id === id);
+  //   console.log("updated user", updateUser);
+  //   add
+  //     ? updateUser.followers.push({
+  //         _id: user._id,
+  //         fullname: user.fullname,
+  //         imgUrl: user.imgUrl,
+  //       })
+  //     : updateUser.followers.splice(ind, 1);
+  //   console.log("updated user", updateUser);
+
+  //   setfollow(!follow);
+  // }
 
   return (
     <div className="test">
@@ -41,7 +51,7 @@ export function SuggestedProfiles({ user, users }) {
         {/* <button>See All</button> */}
       </div>
       {users
-        ? users.map((User) => {
+        ? users.map((User, ind) => {
             if (User._id != user._id) {
               return (
                 <div className="profile">
@@ -54,8 +64,10 @@ export function SuggestedProfiles({ user, users }) {
                       <span className="fs12">New to Instagram </span>
                     </div>
                   </div>
-                  {/* {console.log("user.followers", user.followers)} */}
-                  {/* {User.followers.includes({
+                  <FollowUnfollow User={User} user={user} />
+                  {/* {console.log("User.followers", User.followers)}
+                  {console.log("user.following", User.followers)}
+                  {User.followers.includes({
                     _id: user._id,
                     fullname: user.fullname,
                     imgUrl: user.imgUrl,

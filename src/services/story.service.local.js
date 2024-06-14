@@ -145,7 +145,7 @@ function createStory() {
       _id: "s200",
       txt: "Best trip ever",
       imgUrl:
-        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg", //Can be an array if decide to support multiple imgs
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595925/samples/coffee.jpg", //Can be an array if decide to support multiple imgs
       by: {
         _id: "u100",
         fullname: "Ulash Ulashi",
@@ -205,6 +205,190 @@ function createStory() {
             "https://res.cloudinary.com/dow3hyinu/image/upload/v1712604171/sunflower_uf3h9w.jpg",
         },
       ],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s300",
+      txt: "Taste like freedom",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595892/samples/food/dessert.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u101",
+        fullname: "Sarit Ak",
+        username: "sarit",
+        imgUrl:
+          "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s400",
+      txt: "Jazz festival",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595898/samples/people/jazz.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u101",
+        fullname: "Sarit Ak",
+        username: "sarit",
+        imgUrl:
+          "https://cloudinary-marketing-res.cloudinary.com/image/upload/ar_0.5,c_fill,g_auto,w_433/q_auto/f_auto/hiking_dog_mountain.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s500",
+      txt: "Recipe by @VeganGF",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595895/samples/food/pot-mussels.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u200",
+        fullname: "Or Smith",
+        username: "or",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595888/sample.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s600",
+      txt: "NYC 😍",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595899/samples/landscapes/architecture-signs.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u200",
+        fullname: "Or Smith",
+        username: "or",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595888/sample.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s700",
+      txt: "",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595904/samples/food/spices.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u200",
+        fullname: "Or Smith",
+        username: "or",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595888/sample.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s800",
+      txt: "",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595901/samples/ecommerce/car-interior-design.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u200",
+        fullname: "Or Smith",
+        username: "or",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595888/sample.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s900",
+      txt: "",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595922/samples/outdoor-woman.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u200",
+        fullname: "Or Smith",
+        username: "or",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595888/sample.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
+      tags: ["fun", "kids"],
+      createdAt: utilService.randomPastTime(),
+      status: "Public", //Private,deleted, archieved
+    },
+    {
+      _id: "s1000",
+      txt: "",
+      imgUrl:
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595924/samples/chair-and-coffee-table.jpg", //Can be an array if decide to support multiple imgs
+      by: {
+        _id: "u200",
+        fullname: "Or Smith",
+        username: "or",
+        imgUrl:
+          "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595888/sample.jpg",
+      },
+      loc: {
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv",
+      },
+      comments: [],
+      likedBy: [],
       tags: ["fun", "kids"],
       createdAt: utilService.randomPastTime(),
       status: "Public", //Private,deleted, archieved
