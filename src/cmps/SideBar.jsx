@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import instagram from "../assets/img/instagram.svg";
+import instagram_icon from "../assets/img/instagram_icon.svg";
 import home from "../assets/img/home_FILL0.svg";
 import search from "../assets/img/search_wght400.svg";
 import explore from "../assets/img/explore_FILL0.svg";
@@ -13,6 +14,7 @@ import * as actions from "../store/story.actions";
 import { useSelector } from "react-redux";
 import { CreateStory } from "./CreateStory.jsx";
 import { useState } from "react";
+import { SearchProfile } from "./SearchProfile.jsx";
 
 // import { CreateStory } from "./CreateStory";
 
@@ -20,11 +22,15 @@ import { useState } from "react";
 export function SideBar() {
   const user = useSelector((storeState) => storeState.userModule.loggeduser);
   const [openModal, setModal] = useState(false);
+  const [openFilterModal, setFilterModal] = useState(false);
+  const [narrowMenu, setNarrowMenu] = useState(false);
+  const [openMenu, setMenu] = useState(false);
+  // const [bottomMenu, setBottomMenu] = useState(false);
 
   const navigate = useNavigate();
   const navButtons = [
     { field: "Home", path: "", icon: home, onClick: "" },
-    { field: "Search", path: "", icon: search, onClick: "" },
+    { field: "Search", path: "", icon: search, onClick: updateFilterModal },
     { field: "Explore", path: "/explore", icon: explore, onClick: "" },
     { field: "Messages", path: "/direct/inbox", icon: message, onClick: "" },
     { field: "Create", path: "", icon: add, onClick: createStory },
@@ -35,16 +41,27 @@ export function SideBar() {
     setModal(!openModal);
   }
 
+  function updateFilterModal() {
+    setNarrowMenu(!narrowMenu);
+    setFilterModal(!openFilterModal);
+  }
+
+  var menuIcon = narrowMenu ? "narrow-icon" : "logo-btn";
+
   return (
     <section className="side-bar flex column">
       {openModal ? <CreateStory setModal={setModal} /> : ""}
       <div>
-        <button className="logo-btn" onClick={() => navigate("")}>
-          <img src={instagram}></img>
+        <button className={menuIcon} onClick={() => navigate("")}>
+          {narrowMenu ? (
+            <img src={instagram_icon} className="img24 "></img>
+          ) : (
+            <img src={instagram} className="img120"></img>
+          )}
         </button>
       </div>
       <div className="nav">
-        <nav className="fs16">
+        <nav className="fs16 ">
           {navButtons.map((btn, ind) => {
             return (
               <NavLink to={btn.path} key={ind} onClick={btn.onClick}>
@@ -55,12 +72,13 @@ export function SideBar() {
           })}
         </nav>
       </div>
-      <div className="menu-btn">
+      <div className="menu-btn ">
         <button className="menu-btn flex fs16">
           <img src={menu}></img>
           Menu
         </button>
       </div>
+      {openFilterModal ? <SearchProfile /> : ""}
     </section>
   );
 }

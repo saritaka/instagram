@@ -40,7 +40,7 @@
     .story-details {
       display: flex;
       flex-direction: column;
-      min-width: em(250px);
+      min-width: rem(400px);
       // background-color: yellow;
       border-radius: 0 em(5px) em(5px) 0;
       background-color: $clr-primary-background;

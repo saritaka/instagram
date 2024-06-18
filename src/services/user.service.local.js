@@ -48,9 +48,6 @@ async function query() {
 }
 
 function getLoggedInUser() {
-  // return loggedinUser;
-  // console.log("util", utilService.loadFromStorage(STORAGE_KEY_USERS));
-  // console.log("util", utilService.loadFromStorage(STORAGE_KEY_USERS)[1]);
   var loggedinUser = utilService.loadFromStorage(STORAGE_KEY_USERS)[1];
   return loggedinUser;
 }
@@ -64,9 +61,6 @@ function getById(userId) {
 }
 
 async function updateUser(user) {
-  // loggedinUser = user;
-  // return user;
-  // debugger;
   var savedUser = await storageService.put(STORAGE_KEY_USERS, user);
   return savedUser;
 }

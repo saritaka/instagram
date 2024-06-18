@@ -90,9 +90,9 @@ button {
   .side {
     grid-area: sidemenu;
     @include for-wide-layout {
-      width: em(300px);
+      width: em(220px);
     }
-    padding: 8px 12px 20px 12px;
+    padding: 0px 12px 20px 12px;
   }
 
   .container {

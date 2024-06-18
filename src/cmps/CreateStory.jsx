@@ -60,15 +60,17 @@ export function CreateStory({ setModal }) {
       </button>
       <div className="create-story-modal ">
         <div className="create-header">
-          {file ? (
+          {file && (
             <button onClick={() => setFile(!file)}>
               <img src={arrow}></img>
             </button>
-          ) : (
-            ""
           )}
-          Create new post
-          {file ? <button onClick={() => createNewStory()}>Share</button> : " "}
+          {/* // ) : (
+          //   ""
+          // )} */}
+          <span>Create new post</span>
+          {file && <button onClick={() => createNewStory()}>Share</button>}
+          {/* // : " "} */}
         </div>
         {file ? (
           <div className="flex approve-post">
@@ -77,21 +79,21 @@ export function CreateStory({ setModal }) {
               <img src={file}></img>
             </div>
             <div className="create-details">
-              <div className="flex align-center fs14">
+              <div className="flex align-center fs14 post-input">
                 <button className="m0 p0">
                   <img src={user.imgUrl} className="profile-pic img32"></img>
                 </button>
                 <span>{user.username}</span>
               </div>
 
-              {/* <input
+              <input
                 onChange={updateText}
                 placeholder="Write a caption..."
-              ></input> */}
-              <textarea
+              ></input>
+              {/* <textarea
                 onChange={updateText}
                 placeholder="Write a caption..."
-              ></textarea>
+              ></textarea> */}
             </div>
           </div>
         ) : (

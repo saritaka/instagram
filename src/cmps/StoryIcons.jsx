@@ -112,9 +112,9 @@ export function StoryIcons({ Story, user }) {
             onClick={() => changeState("likedBy", true)}
           >
             {isliked ? (
-              <img src={favorite_filled}></img>
+              <img src={favorite_filled} className="img30"></img>
             ) : (
-              <img src={favorite}></img>
+              <img src={favorite} className="img30"></img>
             )}
           </button>
           {postBtns.map((btn, ind) => (
@@ -124,17 +124,20 @@ export function StoryIcons({ Story, user }) {
               // onClick={() => btnAction(btn.command, ind)}
               onClick={() => btnAction(btn.command)}
             >
-              <img src={btn.field}></img>
+              <img src={btn.field} className="img30"></img>
             </button>
           ))}
         </div>
         <div>
           {/* <button onClick={() => btnAction("save")}> */}
-          <button onClick={() => changeState("savedStoryIds", true)}>
+          <button
+            onClick={() => changeState("savedStoryIds", true)}
+            className="save-btn"
+          >
             {isSaved ? (
-              <img src={bookmark_filled}></img>
+              <img src={bookmark_filled} className="img30"></img>
             ) : (
-              <img src={bookmark}></img>
+              <img src={bookmark} className="img30"></img>
             )}
           </button>
         </div>

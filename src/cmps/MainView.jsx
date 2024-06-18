@@ -55,7 +55,9 @@ export function MainView({ stories, user, users }) {
                   <button>
                     <img src={story.by.imgUrl}></img>
                   </button>
-                  <button>{story.by.username}</button>
+                  <button onClick={() => navigate(`/${story.by._id}`)}>
+                    {story.by.username}
+                  </button>
                   <span> • </span>
                   <span>
                     <StoryDate StoryDate={story.createdAt} />
@@ -79,7 +81,12 @@ export function MainView({ stories, user, users }) {
               <div className="card-comment">
                 {/* <p> */}
                 <div className="story-txt">
-                  <span>{story.by.username} </span>
+                  <a
+                    onClick={() => navigate(`/${story.by._id}`)}
+                    className="m0 p0"
+                  >
+                    {story.by.username}{" "}
+                  </a>
                   {story.txt}
                 </div>
                 <div>

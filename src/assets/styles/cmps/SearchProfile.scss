@@ -1,0 +1,33 @@
+.filter-modal {
+  position: absolute;
+  width: em(300px);
+  height: 100%;
+  z-index: 10;
+  border: 1px solid gray;
+  border-radius: 8px;
+  margin-left: 52px;
+  background-color: white;
+}
+
+.search-box {
+  // border: 1px solid gray;
+  font-size: 18px;
+  margin: 10px auto;
+  width: 90%;
+  background-color: rgb(219, 219, 219);
+  border-radius: em(5px);
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  form {
+    width: 100%;
+  }
+}
+.user-input {
+  width: 100%;
+  input {
+    margin: auto;
+    width: 100%;
+    background-color: transparent;
+  }
+}

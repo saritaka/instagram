@@ -4,16 +4,21 @@
   background-color: $clr-primary-background;
 
   button {
+    // padding: auto;
     margin: 0;
     background-color: $clr-primary-background;
 
     img {
-      max-width: rem(24px);
-      max-height: rem(24px);
+      max-width: rem(30px);
+      max-height: rem(30px);
       background-color: $clr-primary-background;
     }
   }
 }
 .post-btn {
   padding-left: 0;
+}
+
+.save-btn {
+  padding-right: 0;
 }
