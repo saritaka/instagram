@@ -12,10 +12,14 @@ import * as actions from "../store/story.actions";
 import { AddComment } from "./AddComment";
 import { useNavigate } from "react-router";
 import { SuggestedProfiles } from "./SuggestedProfiles";
+import { StoryMenuModal } from "./storyMenuModal";
+import { useState } from "react";
 // import dot from "../assets/img/dot.svg";
 
 // export function MainView({ stories, user, updateStory, openStoryModal }) {
 export function MainView({ stories, user, users }) {
+  const [openModal, setModal] = useState(false);
+  const [storyToEdit, setStory] = useState(null);
   const navigate = useNavigate();
   // console.log(stories);
 
@@ -42,10 +46,30 @@ export function MainView({ stories, user, users }) {
     return storiesToDisplay;
   }
 
+  function openMenuModal(story) {
+    // debugger;
+    setStory(story);
+    console.log("on");
+    setModal(!openModal);
+  }
+
   const postBtns = [favorite, comment, share];
+  const navigateTo = "";
 
   return (
     <section className="main-view">
+      {openModal && (
+        // <div className="modal">
+        <section className="main-view-modal">
+          <div className="story-menu-modal">
+            <StoryMenuModal
+              story={storyToEdit}
+              openStoryMenu={() => openMenuModal()}
+              navigateTo={navigateTo}
+            />
+          </div>
+        </section>
+      )}
       <article className="cards flex column">
         {relavantStories.map((story, ind) => {
           return (
@@ -64,7 +88,7 @@ export function MainView({ stories, user, users }) {
                   </span>
                 </div>
                 <div>
-                  <button>
+                  <button onClick={() => openMenuModal(story)}>
                     <img src={menu_dots}></img>
                   </button>
                 </div>

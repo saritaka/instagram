@@ -16,19 +16,7 @@ export function UserDetails() {
   // debugger;
   const [selectedBtn, setSelectedBtn] = useState("posts");
 
-  const stories = useSelector((storeState) => storeState.storyModule.stories);
-  // const user = useSelector((storeState) => storeState.userModule.loggeduser);
-  const user = useSelector((storeState) => storeState.userModule.getuser);
-  const users = useSelector((storeState) => storeState.userModule.users);
-
   var userId = useParams().username;
-  console.log("userId", userId);
-
-  console.log("user in user details", user);
-  // console.log("user in usertest details", usertest);
-  // const params =
-  // console.log("params", params);
-  console.log("stories", stories);
 
   const navigate = useNavigate();
   const btnRef = useRef(null);
@@ -38,6 +26,11 @@ export function UserDetails() {
     loadUser(userId);
     btnRef.current.focus();
   }, [userId]);
+
+  var stories = useSelector((storeState) => storeState.storyModule.stories);
+  // const user = useSelector((storeState) => storeState.userModule.loggeduser);
+  var user = useSelector((storeState) => storeState.userModule.getuser);
+  var users = useSelector((storeState) => storeState.userModule.users);
 
   function getUserStories() {
     if (stories) {

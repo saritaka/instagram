@@ -69,12 +69,9 @@
       padding: 20px 0 0 0px;
       margin: 0 em(50px) em(20px) 0;
       height: em(52px);
+      border: none;
+      outline: none;
       // padding: 0;
-    }
-
-    button:focus {
-      color: black;
-      font-weight: $font-weight-system-medium;
     }
 
     img {
@@ -84,6 +81,7 @@
     }
 
     button:focus {
+      color: black;
       border-top: 1px solid black;
     }
   }
@@ -114,6 +112,7 @@
 
     .post {
       position: relative;
+      z-index: 1;
 
       .overlay {
         position: absolute;

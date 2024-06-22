@@ -1,0 +1,53 @@
+.story-menu-modal {
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  // padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  //   background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.1); /* Black w/ opacity */
+
+  .story-menu-options {
+    background-color: $clr-primary-background;
+    max-width: 25vw;
+    max-height: 25vh;
+    margin: em(150px) auto;
+    border-radius: em(8px);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+    border: 1px solid rgba(219, 219, 219, 0.5);
+
+    button {
+      //   border-radius: em(8px);
+      //   margin: 1px;
+      //   height: 100%;
+      //   width: 100%;
+      //   display: flex;
+      //   justify-content: center;
+      //   align-items: center;
+      margin: 0;
+      padding: 15px;
+      color: black;
+      border-bottom: 1px solid rgba(219, 219, 219, 0.5);
+      //   background-color: yellow;
+    }
+
+    .red-btn {
+      color: red;
+      font-weight: 700;
+    }
+
+    .radius-bottom {
+      border-radius: 0 0 em(5px) em(5px);
+    }
+
+    .radius-top {
+      border-radius: em(5px) em(5px) 0 0;
+    }
+  }
+}

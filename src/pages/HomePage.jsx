@@ -26,15 +26,10 @@ export function HomePage() {
   // console.log("params", params.storyid);
   // console.log("location.pathname", useLocation().pathname);
 
-  const stories = useSelector((storeState) => storeState.storyModule.stories);
-  const user = useSelector((storeState) => storeState.userModule.loggeduser);
-  // debugger;
-  const users = useSelector((storeState) => storeState.userModule.users);
-
   // console.log("Homepage- stories", stories);
   // console.log("Homepage- user", user);
-  console.log("Homepage- users", users);
-  console.log("Homepage- stories", stories);
+  // console.log("Homepage- users", users);
+  // console.log("Homepage- stories", stories);
 
   useEffect(() => {
     console.log("up");
@@ -42,6 +37,11 @@ export function HomePage() {
     loadUsers();
     loadLoggedInUser();
   }, []);
+
+  var stories = useSelector((storeState) => storeState.storyModule.stories);
+  var user = useSelector((storeState) => storeState.userModule.loggeduser);
+  // debugger;
+  var users = useSelector((storeState) => storeState.userModule.users);
 
   async function onUpdateStory(story) {
     try {

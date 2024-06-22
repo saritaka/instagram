@@ -104,45 +104,47 @@ export function StoryIcons({ Story, user }) {
 
   return (
     <section>
-      <div className="card-btn flex">
-        <div>
-          {/* <button className="post-btn" onClick={() => btnAction("like")}> */}
-          <button
-            className="post-btn"
-            onClick={() => changeState("likedBy", true)}
-          >
-            {isliked ? (
-              <img src={favorite_filled} className="img30"></img>
-            ) : (
-              <img src={favorite} className="img30"></img>
-            )}
-          </button>
-          {postBtns.map((btn, ind) => (
+      {Story && user && (
+        <div className="card-btn flex">
+          <div>
+            {/* <button className="post-btn" onClick={() => btnAction("like")}> */}
             <button
               className="post-btn"
-              key={ind}
-              // onClick={() => btnAction(btn.command, ind)}
-              onClick={() => btnAction(btn.command)}
+              onClick={() => changeState("likedBy", true)}
             >
-              <img src={btn.field} className="img30"></img>
+              {isliked ? (
+                <img src={favorite_filled} className="img30"></img>
+              ) : (
+                <img src={favorite} className="img30"></img>
+              )}
             </button>
-          ))}
+            {postBtns.map((btn, ind) => (
+              <button
+                className="post-btn"
+                key={ind}
+                // onClick={() => btnAction(btn.command, ind)}
+                onClick={() => btnAction(btn.command)}
+              >
+                <img src={btn.field} className="img30"></img>
+              </button>
+            ))}
+          </div>
+          <div>
+            {/* <button onClick={() => btnAction("save")}> */}
+            <button
+              onClick={() => changeState("savedStoryIds", true)}
+              className="save-btn"
+            >
+              {isSaved ? (
+                <img src={bookmark_filled} className="img30"></img>
+              ) : (
+                <img src={bookmark} className="img30"></img>
+              )}
+            </button>
+          </div>
         </div>
-        <div>
-          {/* <button onClick={() => btnAction("save")}> */}
-          <button
-            onClick={() => changeState("savedStoryIds", true)}
-            className="save-btn"
-          >
-            {isSaved ? (
-              <img src={bookmark_filled} className="img30"></img>
-            ) : (
-              <img src={bookmark} className="img30"></img>
-            )}
-          </button>
-        </div>
-      </div>
-      <div>{Story.likedBy.length} likes</div>
+      )}
+      {Story && user && <div>{Story.likedBy.length} likes</div>}
     </section>
   );
 }

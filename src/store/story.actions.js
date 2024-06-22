@@ -1,5 +1,10 @@
 import { storyService } from "../services/story.service.local";
-import { SET_STORIES, UPDATE_STORY, ADD_STORY } from "./story.reducer";
+import {
+  SET_STORIES,
+  UPDATE_STORY,
+  ADD_STORY,
+  REMOVE_STORY,
+} from "./story.reducer";
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 import { store } from "./store";
 
@@ -25,5 +30,14 @@ export async function updateStory(story) {
   } catch (err) {
     console.log("Had issues saving stories", err);
     throw err;
+  }
+}
+
+export async function removeStory(storyId) {
+  try {
+    await storyService.remove(storyId);
+    store.dispatch({ type: REMOVE_STORY, storyId });
+  } catch (err) {
+    console.log("StoryActions: err in removeStory", err);
   }
 }
