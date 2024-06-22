@@ -1,8 +1,18 @@
 import { useSelector } from "react-redux";
 import * as actions from "../store/story.actions";
 import { useNavigate } from "react-router";
+import { useState } from "react";
+import { EditStory } from "./EditStory";
 
-export function StoryMenuModal({ story, openStoryMenu, navigateTo }) {
+export function StoryMenuModal({
+  story,
+  openStoryMenu,
+  // editOption,
+  navigateTo,
+}) {
+  const [editStory, setEditStory] = useState(false);
+
+  // console.log("setOpenedit", editOption);
   console.log("in story menu", story);
 
   const user = useSelector((storeState) => storeState.userModule.loggeduser);
@@ -16,49 +26,39 @@ export function StoryMenuModal({ story, openStoryMenu, navigateTo }) {
     openStoryMenu();
   }
 
+  function editSelectedStory() {
+    setEditStory(true);
+    // openStoryMenu(false);
+    // editOption();
+  }
+
   var menuBtn = false;
   story.by._id === user._id ? (menuBtn = true) : (menuBtn = false);
 
+  // var hidden = "";
+  // editStory ? (hidden = "hidden") : hidden;
+
   return (
-    <section className="story-menu-options">
+    <section className={"story-menu-options "}>
+      {/* <section className={"story-menu-options"}> */}
       {menuBtn && (
         <button className="red-btn radius-top" onClick={() => deleteStory()}>
           Delete
         </button>
       )}
-      {menuBtn && <button>Edit</button>}
+      {menuBtn && <button onClick={() => editSelectedStory()}>Edit</button>}
       <button className="radius-bottom" onClick={() => openStoryMenu()}>
         Cancel
       </button>
-
-      {/* <div className="create-story-modal ">
-        <div className="create-header">
-          {file && <button onClick={() => setFile(!file)}>Cancel</button>}
-          <span>Edit info</span>
-          {file && <button onClick={() => createNewStory()}>Done</button>}
+      {editStory && (
+        <div className="story-menu-modal">
+          <EditStory
+            story={story}
+            navigateTo={navigateTo}
+            openStoryMenu={openStoryMenu}
+          />
         </div>
-        {file ? (
-          <div className="flex approve-post">
-            <div className="create-picture">
-              <img src={file}></img>
-            </div>
-            <div className="create-details">
-              <div className="flex align-center fs14 post-input">
-                <button className="m0 p0">
-                  <img src={user.imgUrl} className="profile-pic img32"></img>
-                </button>
-                <span>{user.username}</span>
-              </div>
-              <input onChange={updateText}></input>
-            </div>
-          </div>
-        ) : (
-          <div className="create-body">
-            Drag photos and videos here
-            <input onChange={handleSelection} type="file"></input>
-          </div>
-        )}
-      </div> */}
+      )}
     </section>
   );
 }

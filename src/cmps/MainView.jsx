@@ -54,7 +54,7 @@ export function MainView({ stories, user, users }) {
   }
 
   const postBtns = [favorite, comment, share];
-  const navigateTo = "";
+  const navigateTo = "/";
 
   return (
     <section className="main-view">

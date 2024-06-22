@@ -4,8 +4,9 @@
   height: 65vh;
   margin: em(100px) auto;
   border-radius: em(8px);
-  // background-color: aqua;
-  // background-color: aqua;
+  // z-index: 2;
+  // position: relative;
+  // inset: 0;
 
   .create-header {
     font-weight: $font-weight-system-medium;

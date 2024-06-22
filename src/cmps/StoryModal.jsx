@@ -10,10 +10,18 @@ import { AddComment } from "./AddComment";
 import { useEffect, useState } from "react";
 import { StoryMenuModal } from "./storyMenuModal";
 import { loadStories } from "../store/story.actions";
+import { EditStory } from "./EditStory";
 
 // export function StoryModal({ storyId }) {
 export function StoryModal() {
   const [openModal, setModal] = useState(false);
+  // const [openEdit, setEdit] = useState(false);
+
+  // console.log("Edittt state", openEdit);
+  console.log("Modall state", openModal);
+
+  // console.log("set edit", openEdit);
+
   const params = useParams();
   const storyId = params.storyid;
 
@@ -42,6 +50,11 @@ export function StoryModal() {
     setModal(!openModal);
   }
 
+  // function openEditOption() {
+  //   console.log("testttttttttttttttttt open edit");
+  //   setEdit(!openEdit);
+  // }
+
   const story = getStory();
   story && console.log("the story", story);
   story && console.log("the story", story[0].imgUrl);
@@ -55,6 +68,7 @@ export function StoryModal() {
           <StoryMenuModal
             story={story[0]}
             openStoryMenu={openStoryMenu}
+            // editOption={openEditOption}
             navigateTo={"user"}
           />
           {/* </div> */}
@@ -62,6 +76,7 @@ export function StoryModal() {
       ) : (
         ""
       )}
+
       {/* <button className="close" onClick={() => navigate("/")}> */}
       <button className="close" onClick={() => navigate(-1)}>
         <img src={close}></img>
