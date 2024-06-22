@@ -29,12 +29,22 @@ export function SideBar() {
 
   const navigate = useNavigate();
   const navButtons = [
-    { field: "Home", path: "", icon: home, onClick: "" },
+    { field: "Home", path: "", icon: home, onClick: closeSearch },
     { field: "Search", path: "", icon: search, onClick: updateFilterModal },
     { field: "Explore", path: "/explore", icon: explore, onClick: "" },
-    { field: "Messages", path: "/direct/inbox", icon: message, onClick: "" },
+    {
+      field: "Messages",
+      path: "/direct/inbox",
+      icon: message,
+      onClick: closeSearch,
+    },
     { field: "Create", path: "", icon: add, onClick: createStory },
-    { field: "Profile", path: `/${user._id}/`, icon: user.imgUrl, onClick: "" },
+    {
+      field: "Profile",
+      path: `/${user._id}/`,
+      icon: user.imgUrl,
+      onClick: closeSearch,
+    },
   ];
 
   function createStory() {
@@ -46,7 +56,13 @@ export function SideBar() {
     setFilterModal(!openFilterModal);
   }
 
+  function closeSearch() {
+    setFilterModal(false);
+    narrowMenu(false);
+  }
+
   var menuIcon = narrowMenu ? "narrow-icon" : "logo-btn";
+  var icon = narrowMenu ? "narrow" : "wide";
 
   return (
     <section className="side-bar flex column">
@@ -64,7 +80,12 @@ export function SideBar() {
         <nav className="fs16 ">
           {navButtons.map((btn, ind) => {
             return (
-              <NavLink to={btn.path} key={ind} onClick={btn.onClick}>
+              <NavLink
+                to={btn.path}
+                key={ind}
+                onClick={btn.onClick}
+                className={icon}
+              >
                 <img src={btn.icon}></img>
                 {btn.field}
               </NavLink>
@@ -72,7 +93,7 @@ export function SideBar() {
           })}
         </nav>
       </div>
-      <div className="menu-btn ">
+      <div className="menu-btn">
         <button className="menu-btn flex fs16">
           <img src={menu}></img>
           Menu

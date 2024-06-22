@@ -2,19 +2,26 @@
   position: absolute;
   width: em(300px);
   height: 100%;
-  z-index: 10;
-  border: 1px solid gray;
-  border-radius: 8px;
+  // z-index: 10;
+  border: 1px solid rgba(219, 219, 219, 0.8);
+  border-radius: 0 em(5px) em(5px) 0;
   margin-left: 52px;
   background-color: white;
+  flex-direction: column;
+
+  h1 {
+    font-size: 25px;
+    width: 90%;
+    margin: 25px auto;
+    padding-bottom: 10px;
+    font-weight: 500;
+  }
 }
 
 .search-box {
-  // border: 1px solid gray;
-  font-size: 18px;
   margin: 10px auto;
   width: 90%;
-  background-color: rgb(219, 219, 219);
+  background-color: #efefef;
   border-radius: em(5px);
   height: 5vh;
   display: flex;
@@ -26,8 +33,25 @@
 .user-input {
   width: 100%;
   input {
+    font-size: 16px;
     margin: auto;
     width: 100%;
     background-color: transparent;
+  }
+}
+
+.profiles {
+  padding-top: 10px;
+  margin: 10px;
+  border-top: 1px solid rgba(219, 219, 219, 0.8);
+  flex: 1;
+  // background-color: pink;
+
+  .profile-btn {
+    // background-color: yellow;
+    width: 100%;
+    span {
+      font-weight: 500;
+    }
   }
 }

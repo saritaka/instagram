@@ -1,28 +1,27 @@
-export function SearchProfile() {
-  // const [filterByToEdit, setFilterByToEdit] = useState(filterBy);
+import { useState } from "react";
+import { userService } from "../services/user.service.local";
+import { useNavigate } from "react-router";
 
-  // useEffect(() => {
-  //   let activeFilterBy = {};
-  //   for (const field in filterBy) {
-  //     if (filterBy[field] != null) {
-  //       activeFilterBy[field] = filterBy[field];
-  //     }
-  //   }
-  //   setSearchParams(activeFilterBy);
-  //   loadEmails();
-  // }, [filterBy]);
+export function SearchProfile() {
+  const [profiles, setProfiles] = useState([]);
+  console.log("profiles", profiles);
+
+  const navigate = useNavigate();
 
   function onSubmitFilter() {}
 
-  function handleChange() {}
-
-  // function onSetFilter(fieldsToUpdate) {
-  //   setFilterBy((prevFilter) => ({ ...prevFilter, ...fieldsToUpdate }));
-  // }
+  async function handleChange(ev) {
+    console.log("ev", ev);
+    console.log(ev.target.value);
+    var filteredUsers = await userService.query({ txt: ev.target.value });
+    console.log(filteredUsers);
+    setProfiles(filteredUsers);
+  }
 
   return (
-    <section className="filter-modal">
+    <section className="filter-modal flex">
       <h1>Search</h1>
+      {/* seperate the search functionality to another component */}
       <div className="search-box">
         <form onSubmit={onSubmitFilter}>
           <div className="user-input">
@@ -30,35 +29,38 @@ export function SearchProfile() {
               type="text"
               placeholder="Search"
               name="txt"
-              // value={filterByToEdit.txt}
-              // onChange={handleChange}
+              onChange={handleChange}
             ></input>
-            {/* <button className="header-icon">
-              <img src={searchIcon}></img>
-            </button> */}
           </div>
         </form>
-        {/* <button className="header-icon" onClick={onOpenFilter}>
-          <img src={filterIcon}></img>
-        </button> */}
+      </div>
+      <div className="profiles">
+        {profiles
+          ? profiles.map((profile, ind) => {
+              return (
+                <div className="profile">
+                  <button
+                    className="profile-btn"
+                    onClick={() => navigate(`/${profile._id}`)}
+                  >
+                    <div className="flex align-center">
+                      <img src={profile.imgUrl} className="img44"></img>
+                      <div className="flex colunm profile-text">
+                        {/* <button onClick={() => navigate(`/${profile._id}`)}> */}
+                        {profile.username}
+                        {/* </button> */}
+                        <span className="fs12">
+                          {profile.fullname} • {profile.followers.length}{" "}
+                          followers
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              );
+            })
+          : ""}
       </div>
     </section>
   );
-
-  //       <div>
-  //       <span>{field.title}</span>
-  //       <input
-  //         type={field.type}
-  //         id={field.title}
-  //         name={field.title}
-  //         onChange={handleChange}
-  //         value={field.value}
-  //       ></input>
-  //     </div>
-  //   );
-  // })
-
-  // <div className="filter-btn">
-  //   <button>Search</button>
-  // </div>
 }

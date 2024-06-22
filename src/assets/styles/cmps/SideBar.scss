@@ -23,7 +23,7 @@
     flex-grow: 1;
 
     a {
-      min-width: em(150px);
+      // min-width: em(150px);
       min-height: em(24px);
       padding: em(12px);
       margin: 8px 0;
@@ -36,6 +36,8 @@
         width: em(24px);
         height: em(24px);
         border-radius: 50%;
+        object-fit: cover;
+        max-width: 100%;
       }
     }
     a:hover {
@@ -49,7 +51,7 @@
 
   .menu-btn {
     margin-bottom: em(10px);
-    min-width: em(196px);
+    // min-width: em(196px);
     min-height: em(24px);
 
     button {
@@ -98,6 +100,9 @@
 
   .narrow {
     width: em(50px);
+    img {
+      min-width: em(24px);
+    }
   }
 
   .wide {
