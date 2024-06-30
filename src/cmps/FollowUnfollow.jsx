@@ -20,7 +20,6 @@ export function FollowUnfollow({ User, user }) {
 
   function updateFollow(update) {
     console.log("update", update);
-    // debugger;
     switch (update) {
       case "add":
         user.following.push({
@@ -51,11 +50,11 @@ export function FollowUnfollow({ User, user }) {
         user.following.splice(userind, 1);
         User.followers.splice(Userind, 1);
 
-        setFollow(false);
         updateUser(User);
         console.log("User after", User);
         updateUser(user);
         console.log("user after", user);
+        setFollow(false);
         break;
     }
   }

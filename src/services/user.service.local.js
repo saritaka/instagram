@@ -38,6 +38,10 @@ export const userService = {
   // getUsers,
   updateUser,
   // createUser,
+  signup,
+  login,
+  logout,
+  getEmptyUser,
 };
 
 _createUsers();
@@ -55,8 +59,10 @@ async function query(filterBy = {}) {
 }
 
 function getLoggedInUser() {
-  var loggedinUser = utilService.loadFromStorage(STORAGE_KEY_USERS)[1];
-  return loggedinUser;
+  // var loggedinUser = utilService.loadFromStorage(STORAGE_KEY_USERS)[1];
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
+  // return loggedinUser;
+  // return null;
 }
 
 // function getUsers() {
@@ -69,6 +75,7 @@ function getById(userId) {
 
 async function updateUser(user) {
   var savedUser = await storageService.put(STORAGE_KEY_USERS, user);
+  console.log("saved user in the service ", savedUser);
   return savedUser;
 }
 
@@ -167,4 +174,51 @@ function _createUsers() {
     users = createUser();
   }
   utilService.saveToStorage(STORAGE_KEY_USERS, users);
+}
+
+async function signup(userCred) {
+  // userCred.score = 10000;
+  userCred.following = [];
+  userCred.followers = [];
+  userCred.savedStoryIds = [];
+  if (!userCred.imgUrl)
+    userCred.imgUrl =
+      "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png";
+  const user = await storageService.post(STORAGE_KEY_USERS, userCred);
+  return saveLocalUser(user);
+}
+
+async function login(userCred) {
+  const users = await storageService.query(STORAGE_KEY_USERS);
+  const user = users.find((user) => user.username === userCred.username);
+  if (user) {
+    return saveLocalUser(user);
+  }
+}
+
+function saveLocalUser(user) {
+  user = {
+    _id: user._id,
+    username: user.username,
+    fullname: user.fullname,
+    imgUrl: user.imgUrl,
+    savedStoryIds: user.savedStoryIds,
+    followers: user.followers,
+    following: user.following,
+  };
+  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
+  return user;
+}
+
+async function logout() {
+  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
+}
+
+function getEmptyUser() {
+  return {
+    username: "",
+    fullname: "",
+    password: "",
+    imgUrl: "",
+  };
 }

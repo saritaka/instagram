@@ -61,13 +61,15 @@ export function HomePage() {
 
   return (
     <section>
-      <MainView
-        stories={stories}
-        user={user}
-        users={users}
-        // updateStory={onUpdateStory}
-        // openStoryModal={openStoryModal}
-      />
+      {user && (
+        <MainView
+          stories={stories}
+          user={user}
+          users={users}
+          // updateStory={onUpdateStory}
+          // openStoryModal={openStoryModal}
+        />
+      )}
       {/* <div className="home-page"> */}
       {/* <div className="side-nav"> */}
       {/* <SideBar user={user} /> */}
@@ -90,7 +92,7 @@ export function HomePage() {
       {/* </div> */}
       {/* {openModal ? <StoryModal /> : ""} */}
       {/* {openModal ? <Outlet /> : ""} */}
-      <Outlet />
+      {user && <Outlet />}
       {/* </div> */}
       {/* {location == "/p/:storyId}" && <StoryModal />} */}
     </section>

@@ -8,7 +8,7 @@ import comments from "../assets/img/comment_white.svg";
 import likes from "../assets/img/favorite_white.svg";
 import { useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
-import { loadUser } from "../store/user.actions";
+import { loadUser, loadUsers } from "../store/user.actions";
 import { loadStories } from "../store/story.actions";
 
 // export function UserDetails({ user, stories }) {
@@ -24,13 +24,24 @@ export function UserDetails() {
   useEffect(() => {
     loadStories();
     loadUser(userId);
+    loadUsers();
+    // getUser();
     btnRef.current.focus();
   }, [userId]);
 
   var stories = useSelector((storeState) => storeState.storyModule.stories);
   // const user = useSelector((storeState) => storeState.userModule.loggeduser);
-  var user = useSelector((storeState) => storeState.userModule.getuser);
+  const user = useSelector((storeState) => storeState.userModule.getuser);
+  // var user = getUser();
   var users = useSelector((storeState) => storeState.userModule.users);
+
+  console.log("user in userdetails", user);
+
+  // async function getUser() {
+  //   var user = await loadUser(userId);
+  //   console.log("userrrrrrrrrrrrr", user);
+  //   return user;
+  // }
 
   function getUserStories() {
     if (stories) {
