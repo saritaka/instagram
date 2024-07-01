@@ -76,7 +76,7 @@ function createStory() {
       _id: "s100",
       txt: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id nam voluptatem, enim recusandae ea ex obcaecati error dicta voluptates numquam consequatur neque commodi, architecto odit itaque non fuga minima quas.",
       imgUrl:
-        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595929/cld-sample-4.jpg", //Can be an array if decide to support multiple imgs
+        "https://res.cloudinary.com/dow3hyinu/image/upload/v1712595929/cld-sample-4.jpg",
       by: {
         _id: "u100",
         fullname: "Tal Bar",
@@ -101,7 +101,6 @@ function createStory() {
           },
           txt: "good one!",
           likedBy: [
-            // Optional
             {
               _id: "u105",
               fullname: "Bob",
@@ -124,7 +123,6 @@ function createStory() {
       ],
       likedBy: [
         {
-          // _id: "u105",
           _id: "u101",
           fullname: "Bob",
           imgUrl:
@@ -139,7 +137,7 @@ function createStory() {
       ],
       tags: ["fun", "kids"],
       createdAt: utilService.randomPastTime(),
-      status: "Public", //Private,deleted, archieved
+      status: "Public",
     },
     {
       _id: "s200",
