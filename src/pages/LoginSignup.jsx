@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import instagram from "../assets/img/instagram.svg";
-import { userService } from "../services/user.service.local";
+// import { userService } from "../services/user.service.local";
+import { userService } from "../services/user.service";
 import { SignupFields } from "../cmps/SignupFileds";
 import * as actions from "../store/user.actions";
 

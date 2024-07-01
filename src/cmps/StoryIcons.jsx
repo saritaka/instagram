@@ -62,7 +62,7 @@ export function StoryIcons({ Story, user }) {
     }
 
     if (field === "savedStoryIds") {
-      console.log("saved stoy id - in story icons ", user);
+      // console.log("saved stoy id - in story icons ", user);
       if (user.savedStoryIds.includes(Story._id)) {
         if (update) {
           var ind = user.savedStoryIds.findIndex(

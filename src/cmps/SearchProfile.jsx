@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { userService } from "../services/user.service.local";
+// import { userService } from "../services/user.service.local";
+import { userService } from "../services/user.service";
 import { useNavigate } from "react-router";
 
 export function SearchProfile() {
@@ -13,7 +14,9 @@ export function SearchProfile() {
   async function handleChange(ev) {
     console.log("ev", ev);
     console.log(ev.target.value);
-    var filteredUsers = await userService.query({ txt: ev.target.value });
+    var filteredUsers = await userService.getUsers({ txt: ev.target.value });
+    // var filteredUsers = await userService.query({ txt: ev.target.value });
+    debugger;
     console.log(filteredUsers);
     setProfiles(filteredUsers);
   }

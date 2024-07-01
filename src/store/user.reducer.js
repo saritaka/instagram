@@ -62,7 +62,7 @@ export function userReducer(state = initialState, action) {
 
     case UPDATE_USER:
       newState = { ...state, user: action.user };
-      console.log("in new stateeeeeeeeeeeeeeeeeeee:", newState);
+      console.log("in new state:", newState);
 
     // break;
     // return {
@@ -81,6 +81,6 @@ export function userReducer(state = initialState, action) {
   }
   // For debug:
   window.userState = newState;
-  console.log("State:", newState);
+  // console.log("State:", newState);
   return newState;
 }

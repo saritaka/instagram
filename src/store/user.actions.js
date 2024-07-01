@@ -1,4 +1,5 @@
-import { userService } from "../services/user.service.local.js";
+// import { userService } from "../services/user.service.local.js";
+import { userService } from "../services/user.service.js";
 // import { socketService } from "../services/socket.service.js";
 import { store } from "../store/store.js";
 
@@ -17,9 +18,9 @@ import {
 export async function loadUsers() {
   try {
     store.dispatch({ type: LOADING_START });
-    // const users = await userService.getUsers();
+    const users = await userService.getUsers();
 
-    const users = await userService.query();
+    // const users = await userService.query();
 
     store.dispatch({ type: SET_USERS, users });
   } catch (err) {
@@ -45,7 +46,8 @@ export async function loadLoggedInUser() {
 
 export async function updateUser(user) {
   try {
-    await userService.updateUser(user);
+    // await userService.updateUser(user);
+    await userService.update(user);
     store.dispatch({ type: UPDATE_USER, user });
   } catch (err) {
     console.log("UserActions: err in updateUser", err);

@@ -4,8 +4,8 @@ import { updateUser } from "../store/user.actions";
 export function FollowUnfollow({ User, user }) {
   const [follow, setFollow] = useState(null);
   console.log(follow);
-  console.log("User", User);
-  console.log("user", user);
+  // console.log("User", User);
+  // console.log("user", user);
 
   useEffect(() => {
     setFollowBtn();
